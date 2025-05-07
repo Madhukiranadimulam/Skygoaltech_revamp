@@ -146,7 +146,7 @@ export default function TopNavigationBar() {
                     </ul>
                 </nav>
             </div>
-            <div className="w-full flex items-center flex-col justify-center gap-3 h-full">
+            <div className="w-full flex items-center flex-col justify-center gap-3 h-4/5">
                 <p className="text-[40px] font-semibold text-white text-center">Leading Best Software Development Company</p>
                 <span className="text-[40px] font-semibold text-white text-center">In Hyderabad</span>
             </div>
