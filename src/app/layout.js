@@ -26,7 +26,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-white`}
       >
         <TopNavigationBar />
         <main className="w-full px-[2rem] pt-[10rem] min-h-screen overflow-y-auto">{children}</main>
