@@ -8,7 +8,7 @@ export default function BreadCrumb() {
 
     const navigate = useRouter();
     const pathName = usePathname();
-    console.log("Path Name", pathName)
+    // console.log("Path Name", pathName)
 
     const handleDynamicHeading = () => {
         switch (pathName) {

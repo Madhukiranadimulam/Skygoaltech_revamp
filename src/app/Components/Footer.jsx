@@ -31,10 +31,10 @@ export default function Footer() {
                         <h3 className="font-extrabold text-lg">Policies</h3>
                         <div className="flex flex-col gap-3 pt-2">
                             <Link className="no-underline hoverColor" href="/termsAndConditions">Terms & Conditions</Link>
-                            <Link className="no-underline hoverColor" href="dataDeletionPolicy">Data Deletion Policy</Link>
+                            <Link className="no-underline hoverColor" href="/dataDeletionPolicy">Data Deletion Policy</Link>
                             <Link className="no-underline hoverColor" href="/privacyPolicy">Privacy Policy</Link>
-                            <Link className="no-underline hoverColor" href="/cookiesPolicy">Cookies Policy</Link>
                             <Link className="no-underline hoverColor" href="/refundPolicy">Refund Policy</Link>
+                            <Link className="no-underline hoverColor" href="/cancellationPolicy">Cancellation Policy</Link>
                         </div>
                     </div>
                     <div>

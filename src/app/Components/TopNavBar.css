@@ -14,3 +14,25 @@
     background-size: cover;
 
 }
+
+.hoverLine {
+    position: relative;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.hoverLine::after {
+    content: "";
+    position: absolute;
+    background-color: white;
+    transition: width 0.3s;
+    width: 0px;
+    height: 2px;
+    left: 0px;
+    bottom: 0px;
+    display: block;
+}
+
+.hoverLine:hover::after {
+    width: 100%;
+}

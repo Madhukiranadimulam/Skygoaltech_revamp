@@ -3,6 +3,7 @@ import "./globals.css";
 import TopNavigationBar from "./Components/TopNavigationBar";
 import Footer from "./Components/Footer";
 import JoinSkygoalToday from "./Components/JoinSkygoalToday";
+import MobileHeader from "./Components/MobileHeader";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -26,10 +27,15 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-white`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <TopNavigationBar />
-        <main className="w-full px-[2rem] pt-[10rem] min-h-screen overflow-y-auto">{children}</main>
+        <div className="max-lg:hidden">
+          <TopNavigationBar />
+        </div>
+        <div className="w-full lg:hidden">
+          <MobileHeader />
+        </div>
+        <main className="w-full pt-[10rem] min-h-screen overflow-y-auto overflow-x-hidden">{children}</main>
         <JoinSkygoalToday />
         <Footer />
       </body>

@@ -61,7 +61,7 @@ export default function Testimonials() {
     ]
 
     return (
-        <div className='bg-[#2A2742] rounded-xl h-[550px] mb-14 mx-[-2rem]'>
+        <div className='bg-[#2A2742] rounded-xl h-[550px] mb-14 mx-[-2rem] overflow-x-visible'>
             <h4 className='text-white font-semibold text-3xl text-center pt-8'>TESTIMONIALS</h4>
             <div className='flex items-center'>
                 <Swiper

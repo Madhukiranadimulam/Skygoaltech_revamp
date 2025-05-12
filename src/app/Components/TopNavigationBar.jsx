@@ -11,6 +11,7 @@ import { useEffect, useState } from 'react';
 export default function TopNavigationBar() {
 
     const [showNavbar, setShowNavbar] = useState(false);
+    const [bgImgComplete, setBgImgComplete] = useState(false);
 
     const pathname = usePathname();
     const isHome = pathname === '/';
@@ -96,38 +97,64 @@ export default function TopNavigationBar() {
 
     useEffect(() => {
         const handleScroll = () => {
-            if (window.scrollY > 126) {
-                setShowNavbar(true); // Show after 200px
-            } else {
+            // console.log("start")
+            const heroHeight = (window.innerHeight) - 135;
+            const scrollY = window.scrollY;
+            if ((window.innerHeight - window.scrollY) > 600) {
+                // console.log("Blurred Nav Bar")
                 setShowNavbar(false);
+                return;
+            } else if (((window.innerHeight - window.scrollY) < 650) && window.scrollY < heroHeight) {
+                // console.log("Bg white Nav")
+                setShowNavbar(true);
+                setBgImgComplete(false);
+                return;
+            } else {
+                // // console.log("inside")
+                // console.log("Scroll Y", scrollY);
+                // console.log("Hero He", heroHeight)
+                if (scrollY > heroHeight) {
+                    setBgImgComplete(true);
+                    setShowNavbar(false);
+                    // console.log("Screen Completed")
+                    return;
+                } else {
+                    // setShowNavbar(false);
+                    // setBgImgComplete(false);
+                }
             }
-            // console.log("Screen", window.scrollY)
         };
 
         window.addEventListener('scroll', handleScroll);
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
 
+    // console.log("Is Home", isHome)
+    // console.log("Bg complete", bgImgComplete)
+
     return (
         <div
             className={`${isHome && "bgHomePage"}`}
         >
-            <div
-                className={`${(isHome && !showNavbar) ? "text-white" : !isHome ? "fixed text-black z-100 bg-[#FFFFFFE6] shadow-sm border-b-gray-200 backdrop-blur" : "fixed text-black z-100 bg-[#FFFFFFE6]"} w-full`}
-            >
-                <nav className='flex items-center justify-between px-[5rem] py-[1rem]'>
+            <div className={`w-full flex items-center pt-[5rem]`}>
+                <div
+                    className={`fixed flex items-center gap-8
+    ${(showNavbar && pathname === '/') ? 'w-[75%] left-1/2 transform -translate-x-1/2 transition-all duration-700 ease-in-out justify-between px-[3rem] rounded-[70px] bg-white z-[100]'
+                            : (bgImgComplete || !isHome) ? "w-full bg-white justify-between rounded-none px-[5rem] py-2 mt-[-3.5rem] border-b border-b-gray-300 z-50" : 'lg:w-[80%] xl:w-[70%] left-1/2 transform -translate-x-1/2 transition-all duration-700 ease-in-out px-[2rem] justify-between rounded-full bg-white/40 backdrop-blur-xl text-white z-[50]'
+                        }`}
+                >
                     <div>
                         <Image src={sky_logo} alt="Sky-Goal Logo" className='w-32' />
                     </div>
-                    <ul className="flex items-center gap-[3rem]">
+                    <ul className="flex items-center gap-[2rem]">
                         {topNavPaths?.map((item, index) => (
                             <li key={index} className="relative group">
-                                <Link href={item?.path} className="flex items-center gap-1">
+                                <Link href={item?.path} className={`${(item?.name !== 'Services' && item?.name !== 'Contact Us') && 'hoverLine'} flex items-center gap-1 font-medium text-lg`}>
                                     {item?.name} {item?.icon}
                                 </Link>
 
                                 {item?.subPathNames?.length > 0 && (
-                                    <ul className="absolute hidden min-w-min text-nowrap group-hover:flex flex-col bg-white text-black/70 font-medium p-2 shadow-lg z-10">
+                                    <ul className="absolute hidden min-w-min text-nowrap hover:transition-all hover:duration-500 group-hover:flex flex-col bg-white text-black/70 font-medium p-2 shadow-lg z-10">
                                         {item?.subPathNames?.map((subItem) => (
                                             <li key={subItem?.sub_Path}>
                                                 <Link
@@ -144,12 +171,14 @@ export default function TopNavigationBar() {
                             </li>
                         ))}
                     </ul>
-                </nav>
+                </div>
             </div>
-            <div className="w-full flex items-center flex-col justify-center gap-3 h-4/5">
-                <p className="text-[40px] font-semibold text-white text-center">Leading Best Software Development Company</p>
-                <span className="text-[40px] font-semibold text-white text-center">In Hyderabad</span>
-            </div>
+            {isHome &&
+                <div className="w-full flex items-center flex-col justify-center gap-3 h-[92%]">
+                    <p className="text-[45px] font-semibold text-white text-center">Leading Best Software Development Company</p>
+                    <span className="text-[45px] font-semibold text-white text-center">In Hyderabad</span>
+                </div>
+            }
         </div>
     )
 }
