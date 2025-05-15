@@ -4,16 +4,13 @@ import TopNavigationBar from "./Components/TopNavigationBar";
 import Footer from "./Components/Footer";
 import JoinSkygoalToday from "./Components/JoinSkygoalToday";
 import MobileHeader from "./Components/MobileHeader";
+import { Poppins } from "next/font/google";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+const poppins = Poppins({
+  subsets: ['latin'],
+  weight: ['400'],
+  variable: '--font-poppins',          // Optional, for Tailwind
+})
 
 export const metadata = {
   title: "Best Tech and IT service provider",
@@ -27,7 +24,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={poppins.className}
       >
         <div className="max-lg:hidden">
           <TopNavigationBar />

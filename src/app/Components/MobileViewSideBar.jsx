@@ -3,8 +3,7 @@
 import React, { useEffect, useState } from 'react';
 import { RxCross1 } from "react-icons/rx";
 import { IoIosArrowDown } from "react-icons/io";
-import { usePathname, useRouter } from 'next/navigation';
-import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import sky_logo from '../../assets/skygoal-logo.png'
 import Image from 'next/image';
 
@@ -126,10 +125,10 @@ export default function MobileViewSideBar({ setMobileNavOpen }) {
 
     return (
         <div className='w-full h-screen bg-white fixed right-0 z-100 shadow-md overflow-y-auto'>
-            <div className='px-[3rem] py-[2rem]'>
+            <div className='px-[3rem] py-[2rem] max-sm:px-[2rem]'>
                 <div className='w-full flex justify-between items-center'>
                     <div>
-                        <Image src={sky_logo} alt="Sky-Goal Logo" className='w-32' />
+                        <Image src={sky_logo} alt="Sky-Goal Logo" className='w-32 max-sm:w-28' />
                     </div>
                     <button
                         onClick={handleCancelMobileViewSideBar}

@@ -63,27 +63,39 @@ export default function Testimonials() {
     return (
         <div className='bg-[#2A2742] rounded-xl h-[550px] mb-14 mx-[-2rem] overflow-x-visible'>
             <h4 className='text-white font-semibold text-3xl text-center pt-8'>TESTIMONIALS</h4>
-            <div className='flex items-center'>
+            <div className='w-full flex items-center'>
                 <Swiper
                     modules={[Autoplay]}
                     slidesPerView={4}
-                    spaceBetween={20}
+                    spaceBetween={15}
                     loop={true}
                     autoplay={{
                         delay: 3000,
                         disableOnInteraction: false,
                     }}
                     breakpoints={{
-                        0: { slidesPerView: 1 },
-                        640: { slidesPerView: 2 },
-                        1024: { slidesPerView: 4 },
+                        0: {
+                            slidesPerView: 1,
+                        },
+                        640: {
+                            slidesPerView: 2,
+                        },
+                        1024: {
+                            slidesPerView: 3
+                        },
+                        1200: {
+                            slidesPerView: 3
+                        }
                     }}
                 >
                     {testimonialsArr?.map((item, index) => (
                         <SwiperSlide key={index}>
-                            <div className="h-[400px] flex flex-col items-start justify-between gap-4 bg-white rounded-lg px-6 py-4 mx-2 my-[2rem] overflow-y-auto custom-y-scrollBar">
+                            <div
+                                className="h-[400px] flex flex-col items-start justify-between gap-4 bg-white rounded-lg px-6 py-4 mx-10 my-[2rem] overflow-y-auto custom-y-scrollBar"
+                                style={{ width: "" }}
+                            >
                                 <p>{item?.clientFeedBack}</p>
-                                <div className="flex items-start justify-between gap-4">
+                                <div className="w-full flex items-start justify-between gap-4">
                                     <div>
                                         <h3 className="font-bold">{item?.clientName}</h3>
                                         <span>{item?.companyName}</span>
@@ -94,7 +106,6 @@ export default function Testimonials() {
                                             alt="clientCompany-Logo"
                                             width={100}
                                             height={60}
-                                            className="object-contain"
                                             loading='lazy'
                                         />
                                     </div>

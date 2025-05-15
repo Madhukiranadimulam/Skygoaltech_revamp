@@ -14,12 +14,14 @@ export default function BreadCrumb() {
         switch (pathName) {
             case '/business-enquiry':
                 return "Business Enquiry";
+            case '/aboutUs':
+                return 'About Us';
         }
     }
 
     return (
         <>
-            <div className='flex items-center gap-2'>
+            <div className='flex items-center gap-2 pt-2'>
                 <div
                     className='flex items-center gap-1 text-blue-500 cursor-pointer'
                     onClick={() => navigate.push("/")}

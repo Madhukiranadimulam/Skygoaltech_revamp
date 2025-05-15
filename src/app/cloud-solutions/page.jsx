@@ -30,7 +30,7 @@ export default function page() {
     return (
         <>
             <div
-                className='relative min-w-full mt-[-10rem] mx-[-2rem] bg-cover h-[70vh] xl:h-[80vh]'
+                className='relative w-full mt-[-10rem] bg-cover bg-no-repeat h-[70vh] xl:h-[80vh]'
                 style={{ backgroundImage: `url(${serviceImg.src})` }}
             >
                 <div className="bg-white absolute w-[90%] mr-[100px] ml-[80px] top-[89.5%] h-[100px] shadow-sm rounded-xl">

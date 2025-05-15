@@ -1,6 +1,6 @@
 'use client';
 
-import { usePathname } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 import sky_logo from '../../assets/skygoal-logo.png'
 import Image from 'next/image';
 import Link from 'next/link';
@@ -15,6 +15,7 @@ export default function TopNavigationBar() {
 
     const pathname = usePathname();
     const isHome = pathname === '/';
+    const navigate = useRouter();
 
     const topNavPaths = [
         {
@@ -132,29 +133,43 @@ export default function TopNavigationBar() {
     // console.log("Is Home", isHome)
     // console.log("Bg complete", bgImgComplete)
 
+    const handleNavigation = (path) => {
+        // console.log("Path from Home Page", path);
+        // console.log("Is Home", isHome)
+        if (isHome && (path === '/')) {
+            window.scrollTo({ top: 0 })
+            return;
+        } else {
+            navigate.push(path);
+        }
+    }
+
     return (
         <div
             className={`${isHome && "bgHomePage"}`}
         >
             <div className={`w-full flex items-center pt-[5rem]`}>
                 <div
-                    className={`fixed flex items-center gap-8
+                    className={`fixed flex items-center gap-8 py-2
     ${(showNavbar && pathname === '/') ? 'w-[75%] left-1/2 transform -translate-x-1/2 transition-all duration-700 ease-in-out justify-between px-[3rem] rounded-[70px] bg-white z-[100]'
                             : (bgImgComplete || !isHome) ? "w-full bg-white justify-between rounded-none px-[5rem] py-2 mt-[-3.5rem] border-b border-b-gray-300 z-50" : 'lg:w-[80%] xl:w-[70%] left-1/2 transform -translate-x-1/2 transition-all duration-700 ease-in-out px-[2rem] justify-between rounded-full bg-white/40 backdrop-blur-xl text-white z-[50]'
                         }`}
                 >
-                    <div>
+                    <div onClick={() => handleNavigation('/')} className='cursor-pointer'>
                         <Image src={sky_logo} alt="Sky-Goal Logo" className='w-32' />
                     </div>
                     <ul className="flex items-center gap-[2rem]">
                         {topNavPaths?.map((item, index) => (
                             <li key={index} className="relative group">
-                                <Link href={item?.path} className={`${(item?.name !== 'Services' && item?.name !== 'Contact Us') && 'hoverLine'} flex items-center gap-1 font-medium text-lg`}>
+                                <button
+                                    className={`${(item?.name !== 'Services' && item?.name !== 'Contact Us') && 'hoverLine'} flex items-center gap-1 font-medium text-lg cursor-pointer`}
+                                    onClick={() => handleNavigation(item?.path)}
+                                >
                                     {item?.name} {item?.icon}
-                                </Link>
+                                </button>
 
                                 {item?.subPathNames?.length > 0 && (
-                                    <ul className="absolute hidden min-w-min text-nowrap hover:transition-all hover:duration-500 group-hover:flex flex-col bg-white text-black/70 font-medium p-2 shadow-lg z-10">
+                                    <ul className="absolute hidden min-w-min text-nowrap hover:transition-all hover:duration-500 group-hover:flex flex-col bg-white text-black/70 font-medium p-2 shadow-lg z-10 rounded-md">
                                         {item?.subPathNames?.map((subItem) => (
                                             <li key={subItem?.sub_Path}>
                                                 <Link
