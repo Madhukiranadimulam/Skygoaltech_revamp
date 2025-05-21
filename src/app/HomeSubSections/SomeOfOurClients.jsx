@@ -83,7 +83,7 @@ export default function SomeOfOurClients() {
 
     return (
         <div>
-            <h4 className='font-bold text-3xl text-center pt-4 text-[#00000099]'>Some of Our Clients</h4>
+            <h4 className='font-bold text-[35px] text-center pt-4 text-[#00000099] max-md:text-2xl'>Some of Our Clients</h4>
             <div className='py-[2rem]'>
                 <Marquee
                     pauseOnHover={true}

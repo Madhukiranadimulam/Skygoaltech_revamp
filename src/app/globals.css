@@ -17,3 +17,7 @@ body::-webkit-scrollbar-thumb {
 .custom-y-scrollBar::-webkit-scrollbar {
   width: 6px;
 }
+
+html {
+  scroll-behavior: smooth;
+}

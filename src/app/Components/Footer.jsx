@@ -26,9 +26,36 @@ export default function Footer() {
         navigate.push("/");
     }
 
+    const socialMediaIcons = [
+        {
+            icon: <FaFacebook />,
+            path: "https://www.facebook.com/skygoaltechlabs",
+            title: "Facebook",
+            size: "27.2"
+        },
+        {
+            icon: <AiFillInstagram />,
+            path: "https://www.instagram.com/skygoaltech/",
+            title: "Instagram",
+            size: "30.4"
+        },
+        {
+            icon: <FaSquareXTwitter />,
+            path: "https://twitter.com/skygoaltech",
+            title: "Twitter",
+            size: "27.2"
+        },
+        {
+            icon: <FaLinkedin />,
+            path: "https://www.linkedin.com/company/skygoaltech/",
+            title: "LinkedIn",
+            size: "27.2"
+        },
+    ]
+
     return (
         <footer className='mt-[50px] w-full bg-[#2A2742] text-white'>
-            <div className='mx-[11rem] max-lg:mx-[5rem]'>
+            <div className='mx-[10rem] max-lg:mx-[3rem]'>
                 <hr className='mt-[60px] mb-[40px] text-gray-300'>
                 </hr>
                 <div className='w-full flex items-start justify-between gap-10 flex-wrap'>
@@ -44,15 +71,15 @@ export default function Footer() {
                                 alt='skygoal-logo'
                             />
                         </div>
-                        <p className='w-[250px] py-4'>SkygoalTech is a solution provider for digital transformation. We help you to deliver next generation products, services and ideas. Our collaborative method of delivery with our extended team of partners enables us to ensure that we understand what is required by you.</p>
+                        <p className='py-4 w-[300px] max-md:w-[270px]'>SkygoalTech is a solution provider for digital transformation. We help you to deliver next generation products, services and ideas. Our collaborative method of delivery with our extended team of partners enables us to ensure that we understand what is required by you.</p>
                     </div>
                     <div>
                         <h3 className="font-extrabold text-xl">Company</h3>
                         <div className="flex flex-col gap-3 pt-2">
                             <Link className="no-underline hoverColor" href="/aboutUs">About us</Link>
                             <Link className="no-underline hoverColor" href="https://careers.skygoaltech.com/jobs/Careers" target='_blank'>Careers</Link>
-                            <Link className="no-underline hoverColor" href="/portfolio">portfolio</Link>
-                            <Link className="no-underline hoverColor" href="#">Blog</Link>
+                            {/* <Link className="no-underline hoverColor" href="/portfolio">portfolio</Link>
+                            <Link className="no-underline hoverColor" href="#">Blog</Link> */}
                         </div>
                     </div>
                     <div className=''>
@@ -93,18 +120,19 @@ export default function Footer() {
                     </div>
                 </div>
                 <div className='flex items-center gap-8 max-lg:pt-3'>
-                    <Link href="https://www.facebook.com/skygoaltechlabs" title="Facebook" target="_blank">
-                        <FaFacebook className='text-[1.7rem]' />
-                    </Link>
-                    <Link href="https://www.instagram.com/skygoaltech/" title="Instagram" target="_blank">
-                        <AiFillInstagram className='text-[1.9rem]' />
-                    </Link>
-                    <Link href="https://twitter.com/skygoaltech" title="Twitter" target="_blank">
-                        <FaSquareXTwitter className='text-[1.7rem]' />
-                    </Link>
-                    <Link href="https://www.linkedin.com/company/skygoaltech/" title="LinkedIn" target="_blank">
-                        <FaLinkedin className='text-[1.7rem]' />
-                    </Link>
+                    {socialMediaIcons?.map((item, index) => (
+                        <Link
+                            href={item?.path}
+                            title={item?.title}
+                            target="_blank"
+                            style={{ fontSize: item?.size + "px" }}
+                            key={index}
+                        >
+                            {item?.icon}
+                        </Link>
+                    ))
+
+                    }
                 </div>
                 <div className='w-full py-5'>
                     <p className='text-center'>© {fullYear} Sky Goal INC. All rights reserved.</p>

@@ -16,6 +16,8 @@ export default function BreadCrumb() {
                 return "Business Enquiry";
             case '/aboutUs':
                 return 'About Us';
+            case '/caseStudyAndBlogs':
+                return "Case-Study & Blogs"
         }
     }
 

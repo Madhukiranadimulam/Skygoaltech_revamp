@@ -3,11 +3,11 @@
 import ErrorMessage from '../../shared/ErrorMessage.jsx';
 import React, { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
-import { RxCross1 } from "react-icons/rx";
 import callBackFormImg from '../../assets/callBackForm-img.png';
 import Image from 'next/image.js';
+import { RxCross1 } from "react-icons/rx";
 
-export default function InstantCallBackModal({ setModalOpen }) {
+export default function InstantCallBackModal({ setWidgetOpen, widgetOpen }) {
 
     const {
         register,
@@ -19,8 +19,8 @@ export default function InstantCallBackModal({ setModalOpen }) {
     } = useForm();
 
     const handleCancelModal = () => {
-        setModalOpen(false);
-        localStorage.setItem('modalShown', "false");
+        setWidgetOpen(false);
+        document.body.style.overflow = "auto";
     }
 
     const onSubmit = (data) => {
@@ -31,7 +31,8 @@ export default function InstantCallBackModal({ setModalOpen }) {
         const isClickedOutSide = event.target.closest(".outsideClick");
         // console.log("Is Clicked Out Side", isClickedOutSide)
         if (!isClickedOutSide) {
-            setModalOpen(false);
+            setWidgetOpen(false);
+            document.body.style.overflow = "auto";
         }
     };
 
@@ -40,14 +41,17 @@ export default function InstantCallBackModal({ setModalOpen }) {
         return () => document.removeEventListener("mousedown", handleOutsideClick);
     }, []);
 
+    useEffect(() => {
+        document.body.style.overflow = widgetOpen ? "hidden" : "auto"
+    }, [widgetOpen]);
+
     return (
-        <div className='bg-black/50 fixed flex items-center inset-0 z-100 justify-center w-full h-screen'>
-            <div className='bg-white w-[650px] max-lg:w-[400px] rounded-lg px-[2rem] py-[3rem] outsideClick'>
-                <div className='flex items-end justify-end'>
-                    <RxCross1
-                        className='cursor-pointer text-[1.5rem] icon-button'
-                        onClick={handleCancelModal}
-                    />
+        <div className='fixed z-100 bottom-[120px] right-5 max-md:right-0 max-md:bottom-0 max-md:w-full'>
+            <div className='bg-white w-[450px] shadow-md max-md:w-full rounded-lg px-[2rem] py-[3rem] max-lg:py-[1.5rem] outsideClick'>
+                <div className='w-full flex items-end justify-end md:hidden'>
+                    <button className='cursor-pointer'>
+                        <RxCross1 className='text-[1.5rem]' onClick={handleCancelModal} />
+                    </button>
                 </div>
                 <div>
                     <h4 className='text-2xl max-lg:text-lg'>NEED A SERVICE?</h4>
@@ -59,7 +63,7 @@ export default function InstantCallBackModal({ setModalOpen }) {
                             <div className='flex flex-col gap-5'>
                                 <div>
                                     <input
-                                        className='outline-none w-full border border-gray-300 rounded-md px-3 py-2'
+                                        className='outline-none w-full border border-gray-300 rounded-md text-sm px-3 py-2'
                                         type='text'
                                         placeholder='Name'
                                         {...register("name", {
@@ -72,7 +76,7 @@ export default function InstantCallBackModal({ setModalOpen }) {
                                 </div>
                                 <div>
                                     <input
-                                        className='outline-none w-full border border-gray-300 rounded-md px-3 py-2'
+                                        className='outline-none w-full border border-gray-300 text-sm rounded-md px-3 py-2'
                                         type='number'
                                         placeholder='Mobile Number'
                                         {...register("mobileNumber", {
@@ -85,7 +89,7 @@ export default function InstantCallBackModal({ setModalOpen }) {
                                 </div>
                                 <div>
                                     <input
-                                        className='outline-none w-full border border-gray-300 rounded-md px-3 py-2'
+                                        className='outline-none w-full border border-gray-300 text-sm rounded-md px-3 py-2'
                                         type='email'
                                         placeholder='Email'
                                         {...register("email", {
@@ -96,6 +100,20 @@ export default function InstantCallBackModal({ setModalOpen }) {
                                         errors?.email && <ErrorMessage />
                                     }
                                 </div>
+                                {/* <div>
+                                    <textarea
+                                        className='outline-none w-full border border-gray-300 rounded-md px-3 py-2'
+                                        type='text'
+                                        rows={3}
+                                        placeholder='Message'
+                                        {...register("message", {
+                                            required: "*This field is required"
+                                        })}
+                                    />
+                                    {
+                                        errors?.message && <ErrorMessage />
+                                    }
+                                </div> */}
                             </div>
                             <div className='flex items-end justify-end mt-8'>
                                 <button
@@ -107,12 +125,12 @@ export default function InstantCallBackModal({ setModalOpen }) {
                             </div>
                         </form>
                     </div>
-                    <div className='w-[300px] h-[165px] max-lg:w-full bg-[#2A2742] max-lg:order-1'>
+                    <div className='w-[200px] h-[165px] max-lg:w-full bg-[#2A2742] max-lg:order-1'>
                         <Image
                             src={callBackFormImg}
                             // height={250}
                             // width={200}
-                            className='w-[200px] h-[160px] object-cover max-lg:w-full max-lg:h-[150px] max-lg:object-contain'
+                            className='w-[190px] h-[160px] object-contain max-lg:w-full'
                             loading='eager'
                             alt='callBackFormImg'
                         />

@@ -136,11 +136,11 @@ export default function MobileViewSideBar({ setMobileNavOpen }) {
                         <RxCross1 className='text-[2rem] cursor-pointer' />
                     </button>
                 </div>
-                <ul className="flex flex-col gap-6 pt-[2rem] pl-[1rem]">
+                <ul className="flex flex-col gap-6 pt-[2rem] pl-[1rem] max-[500px]:pl-[0rem]">
                     {mobileViewSidePaths?.map((item, index) => (
                         <li key={index} className="relative">
                             <button
-                                className="flex items-center gap-1 font-medium text-lg icon-button"
+                                className="flex items-center gap-1 font-medium text-lg max-[500px]:text-base icon-button"
                                 onClick={() => toggleSubMenu(index, item?.path)}
                             >
                                 {item?.name}
@@ -148,12 +148,12 @@ export default function MobileViewSideBar({ setMobileNavOpen }) {
                             </button>
 
                             {item?.subPathNames?.length > 0 && openIndex === index && (
-                                <ul className="absolute left-1/3 top-0 ml-2 text-nowrap bg-white text-black/70 font-medium p-2 shadow-lg rounded-md z-10 outsideClick">
+                                <ul className="absolute left-1/3 top-0 ml-2 bg-white text-black/70 font-medium p-2 shadow-lg rounded-md z-10 outsideClick">
                                     {item?.subPathNames?.map((subItem) => (
                                         <li key={subItem?.sub_Path}>
                                             <span
                                                 onClick={() => handleNavigateSubMenu(subItem?.sub_Path)}
-                                                className="text-sm block px-4 py-2"
+                                                className="text-sm block px-4 py-2 max-[500px]:text-xs text-nowrap"
                                             >
                                                 {subItem?.subName}
                                             </span>

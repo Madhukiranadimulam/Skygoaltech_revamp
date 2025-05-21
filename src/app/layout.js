@@ -1,15 +1,15 @@
-import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import TopNavigationBar from "./Components/TopNavigationBar";
 import Footer from "./Components/Footer";
 import JoinSkygoalToday from "./Components/JoinSkygoalToday";
 import MobileHeader from "./Components/MobileHeader";
-import { Poppins } from "next/font/google";
+import { Inter } from "next/font/google";
+import InstantCallBackWidget from "@/shared/InstantCallBackWidget";
 
-const poppins = Poppins({
+const poppins = Inter({
   subsets: ['latin'],
   weight: ['400'],
-  variable: '--font-poppins',          // Optional, for Tailwind
+  // variable: '--font-poppins',          // Optional, for Tailwind
 })
 
 export const metadata = {
@@ -33,6 +33,9 @@ export default function RootLayout({ children }) {
           <MobileHeader />
         </div>
         <main className="w-full pt-[10rem] min-h-screen overflow-y-auto overflow-x-hidden">{children}</main>
+        <div className="">
+          <InstantCallBackWidget />
+        </div>
         <JoinSkygoalToday />
         <Footer />
       </body>

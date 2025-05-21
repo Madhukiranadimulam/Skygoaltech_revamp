@@ -169,7 +169,7 @@ export default function page() {
                                             placeholder='Mobile Number'
                                             name='number'
                                             {...register('mobileNumber', {
-                                                required: "*This field is required"
+                                                required: "*This field is required",
                                             })}
                                         />
                                         {errors?.mobileNumber &&

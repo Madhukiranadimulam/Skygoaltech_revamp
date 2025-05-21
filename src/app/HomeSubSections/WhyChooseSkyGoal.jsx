@@ -22,6 +22,7 @@ export default function WhyChooseSkyGoal() {
     });
 
     useEffect(() => {
+        // window.con
         const interval = setInterval(() => {
             setCounters(prev => {
                 // console.log("Prev", { ...prev })
@@ -48,7 +49,7 @@ export default function WhyChooseSkyGoal() {
 
     return (
         <div>
-            <h3 className="mt-[-5rem] mb-[1rem] text-center text-[#00000099] font-bold text-[35px]">Why Choose Us</h3>
+            <h3 className="mt-[-5rem] mb-[1rem] text-center text-[#00000099] font-bold text-[35px] max-md:text-3xl">Why Choose Us</h3>
             <div className='pt-4 mx-[-2rem]'>
                 <Image
                     className='w-full'
@@ -62,24 +63,24 @@ export default function WhyChooseSkyGoal() {
                         <span className="whyChooseContentNumStyles text-[#407BFF]">{counters?.clients}</span>
                         <span className="whyChooseContentSymbol text-[#407BFF]">+</span>
                     </div>
-                    <span className='text-[#18191F] font-semibold text-lg max-md:text-base'>Happy Clients</span>
+                    <span className='text-[#18191F] font-semibold text-base max-md:text-sm'>Happy Clients</span>
                 </div>
                 <div>
                     <div>
                         <span className="whyChooseContentNumStyles text-[#FFBD00]">{counters?.projects}</span>
                         <span className="whyChooseContentSymbol text-[#FFBD00]">+</span>
                     </div>
-                    <span className='text-[#18191F] font-semibold text-lg max-md:text-base'>Projects Completed</span>
+                    <span className='text-[#18191F] font-semibold text-base max-md:text-sm'>Projects Completed</span>
                 </div>
                 <div className='flex flex-col'>
                     <span className="whyChooseContentNumStyles text-[#8500FF]">{counters?.dedicatedPersons}</span>
-                    <span className='text-[#18191F] font-semibold text-lg max-md:text-base'>Dedicated Members</span>
+                    <span className='text-[#18191F] font-semibold text-base max-md:text-sm'>Dedicated Members</span>
                 </div>
                 <div>
                     <div>
                         <span className="whyChooseContentNumStyles text-[#2C5170]">{counters?.years}</span>
                     </div>
-                    <span className='text-[#18191F] font-semibold text-lg max-md:text-base'>Glorious Years</span>
+                    <span className='text-[#18191F] font-semibold text-base max-md:text-sm'>Glorious Years</span>
                 </div>
             </div>
         </div>

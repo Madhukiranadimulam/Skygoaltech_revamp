@@ -62,7 +62,7 @@ export default function Testimonials() {
 
     return (
         <div className='bg-[#2A2742] rounded-xl h-[550px] mb-14 mx-[-2rem] overflow-x-visible'>
-            <h4 className='text-white font-semibold text-3xl text-center pt-8'>TESTIMONIALS</h4>
+            <h4 className='text-white font-semibold text-[35px] text-center pt-8'>TESTIMONIALS</h4>
             <div className='w-full flex items-center'>
                 <Swiper
                     modules={[Autoplay]}
@@ -92,9 +92,8 @@ export default function Testimonials() {
                         <SwiperSlide key={index}>
                             <div
                                 className="h-[400px] flex flex-col items-start justify-between gap-4 bg-white rounded-lg px-6 py-4 mx-10 my-[2rem] overflow-y-auto custom-y-scrollBar"
-                                style={{ width: "" }}
                             >
-                                <p>{item?.clientFeedBack}</p>
+                                <p className='max-md:text-sm'>{item?.clientFeedBack}</p>
                                 <div className="w-full flex items-start justify-between gap-4">
                                     <div>
                                         <h3 className="font-bold">{item?.clientName}</h3>

@@ -8,7 +8,7 @@ export default function MobileViewHomePage() {
             className='!mx-[-0rem] mt-[-4rem] mb-[8rem]'
             style={{
                 width: "100%",
-                height: "100vh",
+                height: "82vh",
                 backgroundImage: `url(${(bgImg?.src)})`,
                 backgroundRepeat: 'no-repeat',
                 backgroundSize: 'cover'
