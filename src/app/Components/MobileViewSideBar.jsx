@@ -3,7 +3,7 @@
 import React, { useEffect, useState } from 'react';
 import { RxCross1 } from "react-icons/rx";
 import { IoIosArrowDown } from "react-icons/io";
-import { useRouter } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 import sky_logo from '../../assets/skygoal-logo.png'
 import Image from 'next/image';
 
@@ -11,6 +11,7 @@ export default function MobileViewSideBar({ setMobileNavOpen }) {
 
     const [openIndex, setOpenIndex] = useState(null);
     const navigate = useRouter();
+    const pathName = usePathname();
 
     const mobileViewSidePaths = [
         {
@@ -118,16 +119,27 @@ export default function MobileViewSideBar({ setMobileNavOpen }) {
         }
     };
 
+    const handleLogoNavigation = () => {
+        if (pathName === "/") {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+            setMobileNavOpen(false);
+            return;
+        } else {
+            navigate.push("/");
+            setMobileNavOpen(false);
+        }
+    }
+
     useEffect(() => {
         document.addEventListener("mousedown", handleOutsideClick);
         return () => document.removeEventListener("mousedown", handleOutsideClick);
     }, []);
 
     return (
-        <div className='w-full h-screen bg-white fixed right-0 z-100 shadow-md overflow-y-auto'>
+        <div className='w-full h-screen bg-white fixed right-0 z-100 overflow-y-auto'>
             <div className='px-[3rem] py-[2rem] max-sm:px-[2rem]'>
                 <div className='w-full flex justify-between items-center'>
-                    <div>
+                    <div onClick={handleLogoNavigation}>
                         <Image src={sky_logo} alt="Sky-Goal Logo" className='w-32 max-sm:w-28' />
                     </div>
                     <button

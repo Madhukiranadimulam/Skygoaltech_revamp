@@ -11,7 +11,7 @@ export default function page() {
         <div className='mt-[-7rem] ml-[2rem] mb-[4rem] max-lg:ml-[0rem]'>
             <BreadCrumb />
             <div>
-                <div className='flex flex-col gap-[5rem] pt-[5rem] px-[10rem] max-lg:px-[4rem]'>
+                <div className='flex flex-col gap-[5rem] pt-[5rem] px-[10rem] max-lg:px-[3rem]'>
                     <div className='flex items-center justify-between gap-[1rem] max-md:flex-wrap'>
                         <div className='flex flex-col gap-5 w-[1000px]'>
                             <h3 className='text-2xl font-semibold'>Our Vision</h3>
@@ -22,7 +22,7 @@ export default function page() {
                         <div>
                             <Image
                                 src={ourMissionImg}
-                                className='w-[900px] h-[300px] object-cover'
+                                className='w-[900px] h-[300px] object-contain'
                                 alt='ourMissionImg-img'
                                 loading='eager'
                             />
@@ -32,7 +32,7 @@ export default function page() {
                         <div className='max-md:order-2'>
                             <Image
                                 src={ourStrategy_img}
-                                className='w-[900px] h-[300px] object-cover'
+                                className='w-[900px] h-[300px] object-contain'
                                 alt='ourStrategy-img'
                                 loading='eager'
                             />

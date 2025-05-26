@@ -1,8 +1,12 @@
 import React from 'react'
+import BreadCrumb from '../Components/BreadCrumb'
 
 export default function page() {
     return (
-        <div className='mt-[-5rem] mx-14 mb-[3rem]'>
+        <div className='mt-[-7rem] mx-14 mb-[3rem]'>
+            <div className='pb-8'>
+                <BreadCrumb />
+            </div>
             <header className='text-3xl font-semibold'>Terms and Conditions</header>
             <div className='pt-[2rem] flex flex-col gap-3'>
 

@@ -152,7 +152,7 @@ export default function TopNavigationBar() {
                 <div
                     className={`fixed flex items-center gap-8 py-2
     ${(showNavbar && pathname === '/') ? 'w-[75%] left-1/2 transform -translate-x-1/2 transition-all duration-800 ease-in-out justify-between px-[3rem] rounded-[70px] bg-white z-[100]'
-                            : (bgImgComplete || !isHome) ? "w-full justify-between rounded-none px-[4rem] py-2 mt-[-3.5rem] border-b border-b-gray-300 z-50 bg-[#FFFFFFE6] backdrop-blur" : 'lg:w-[80%] xl:w-[70%] left-1/2 transform -translate-x-1/2 transition-all duration-700 ease-in-out px-[2rem] justify-between rounded-full bg-white/40 backdrop-blur-xl text-white z-[50]'
+                            : (bgImgComplete || !isHome) ? "w-full justify-between rounded-none px-[4rem] py-2 mt-[-3.5rem] border-b border-b-gray-300 z-50 bg-white" : 'lg:w-[80%] xl:w-[70%] left-1/2 transform -translate-x-1/2 transition-all duration-700 ease-in-out px-[2rem] justify-between rounded-full bg-white/40 backdrop-blur-xl text-white z-[50]'
                         }`}
                 >
                     <div onClick={() => handleNavigation('/')} className='cursor-pointer'>

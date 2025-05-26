@@ -7,6 +7,8 @@ import kusuma_Img from '../../assets/kusumaDM-img.jpeg';
 import umesh_Img from '../../assets/umesh-img.png';
 import saiNadh_Img from '../../assets/saiNadh-img.jpg';
 import sandhya_Img from '../../assets/sandhya-img.jpg';
+import mustaq_img from '../../assets/mustaq-img.png';
+import kishore_img from '../../assets/kishore-img.png';
 
 export default function TeamMembers() {
 
@@ -28,7 +30,7 @@ export default function TeamMembers() {
         {
             no: 3,
             name: "Umesh",
-            designation: "Operations Executive",
+            designation: "Operations Executive, IT",
             image: umesh_Img
         },
         {
@@ -84,6 +86,18 @@ export default function TeamMembers() {
             name: "Rama Krishna",
             designation: "Operational Manager",
             image: rk_img
+        },
+        {
+            no: 13,
+            name: "Mustaq Ahmed",
+            designation: "Frontend-Developer",
+            image: mustaq_img
+        },
+        {
+            no: 14,
+            name: "Kishore",
+            designation: "Frontend-Developer",
+            image: kishore_img
         }
     ]
 
@@ -107,20 +121,24 @@ export default function TeamMembers() {
             {employeeData?.map((item, index) => (
                 <div
                     key={index}
-                    className='relative group'
+                    className="relative group w-[200px] h-[250px]"
                     onMouseOver={() => handleHover(item?.no)}
                     onMouseLeave={() => handleMouseLeave(item?.no)}
                 >
                     <Image
                         src={item?.image}
-                        className='w-[200px] h-[250px] rounded-lg object-cover'
-                        alt='team-members-imgs'
+                        className="w-full h-full rounded-lg object-cover"
+                        alt="team-members-imgs"
                     />
-                    <div
-                        className={`${hoverElement[item?.no] ? "flex flex-col gap-1.5 justify-center items-center text-white bg-[#D94B62] px-4 py-1.5 absolute bottom-0 rounded-tr-none rounded-tl-none rounded-b-lg" : "hidden"} w-full`}
-                    >
-                        <span>{item?.name}</span>
-                        <span className='text-xs'>{item?.designation}</span>
+                    <div className="left-0 w-full h-2/3 overflow-hidden rounded-b-lg">
+                        <div
+                            className={
+                                `absolute bottom-0 w-full flex flex-col gap-1.5 justify-center items-center text-white z-10 transition-all duration-900 ease-in-out ${hoverElement[item?.no] ? "opacity-100 bg-[#D94B62] py-2" : "opacity-0"
+                                }`}
+                        >
+                            <span>{item?.name}</span>
+                            <span className="text-xs">{item?.designation}</span>
+                        </div>
                     </div>
                 </div>
             ))}

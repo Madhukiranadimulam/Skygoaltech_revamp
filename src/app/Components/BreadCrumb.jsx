@@ -18,12 +18,22 @@ export default function BreadCrumb() {
                 return 'About Us';
             case '/caseStudyAndBlogs':
                 return "Case-Study & Blogs"
+            case '/termsAndConditions':
+                return 'Terms & Conditions'
+            case '/dataDeletionPolicy':
+                return 'Data Deletion Policy'
+            case '/privacyPolicy':
+                return 'Privacy Policy'
+            case '/refundPolicy':
+                return 'Refund Policy'
+            case '/cancellationPolicy':
+                return 'Cancellation Policy'
         }
     }
 
     return (
         <>
-            <div className='flex items-center gap-2 pt-2'>
+            <div className='flex items-center gap-2 pt-2 pl-[2.5rem]'>
                 <div
                     className='flex items-center gap-1 text-blue-500 cursor-pointer'
                     onClick={() => navigate.push("/")}

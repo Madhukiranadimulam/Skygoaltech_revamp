@@ -74,7 +74,7 @@ export default function Footer() {
                         <p className='py-4 w-[300px] max-md:w-[270px]'>SkygoalTech is a solution provider for digital transformation. We help you to deliver next generation products, services and ideas. Our collaborative method of delivery with our extended team of partners enables us to ensure that we understand what is required by you.</p>
                     </div>
                     <div>
-                        <h3 className="font-extrabold text-xl">Company</h3>
+                        <h3 className="font-extrabold text-2xl">Company</h3>
                         <div className="flex flex-col gap-3 pt-2">
                             <Link className="no-underline hoverColor" href="/aboutUs">About us</Link>
                             <Link className="no-underline hoverColor" href="https://careers.skygoaltech.com/jobs/Careers" target='_blank'>Careers</Link>
@@ -83,7 +83,7 @@ export default function Footer() {
                         </div>
                     </div>
                     <div className=''>
-                        <h3 className="font-extrabold text-xl">Policies</h3>
+                        <h3 className="font-extrabold text-2xl">Policies</h3>
                         <div className="flex flex-col gap-3 pt-2">
                             <Link className="no-underline hoverColor" href="/termsAndConditions">Terms & Conditions</Link>
                             <Link className="no-underline hoverColor" href="/dataDeletionPolicy">Data Deletion Policy</Link>
@@ -93,7 +93,7 @@ export default function Footer() {
                         </div>
                     </div>
                     <div>
-                        <h3 className="font-extrabold text-xl">Contact Us</h3>
+                        <h3 className="font-extrabold text-2xl">Contact Us</h3>
                         <div className="">
                             <h5 className="font-semibold my-3">Address, India</h5>
                             <p>
@@ -130,9 +130,7 @@ export default function Footer() {
                         >
                             {item?.icon}
                         </Link>
-                    ))
-
-                    }
+                    ))}
                 </div>
                 <div className='w-full py-5'>
                     <p className='text-center'>© {fullYear} Sky Goal INC. All rights reserved.</p>

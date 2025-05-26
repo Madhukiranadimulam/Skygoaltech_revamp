@@ -102,7 +102,7 @@ export default function page() {
             <div className='px-[6rem] pt-[3rem] max-lg:pr-[2rem] max-lg:pl-[2rem]'>
                 <header className='text-[34px] font-semibold'>Business Enquiry</header>
                 <div className='w-full pt-4 flex items-start justify-between gap-[3rem] max-lg:flex-col'>
-                    <div className='w-4/5 bg-[#4F4B6A] text-white rounded-xl max-lg:w-full max-lg:mb-[4rem] max-lg:order-2'>
+                    <div className='w-4/5 bg-[#383066] text-white rounded-xl max-lg:w-full max-lg:mb-[4rem] max-lg:order-2'>
                         <div className='flex flex-col justify-between gap-6 px-[3rem] py-[4rem] max-lg:flex max-lg:flex-row max-lg:items-start max-lg:flex-wrap max-sm:px-[1.5rem]'>
                             <div className='space-y-1'>
                                 <p className='text-xl font-semibold'>India</p>
