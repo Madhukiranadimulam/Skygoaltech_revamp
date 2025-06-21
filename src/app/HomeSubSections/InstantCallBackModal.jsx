@@ -13,8 +13,6 @@ export default function InstantCallBackModal({ setWidgetOpen, widgetOpen }) {
         register,
         handleSubmit,
         formState: { errors },
-        control,
-        watch,
         reset
     } = useForm();
 
@@ -41,9 +39,9 @@ export default function InstantCallBackModal({ setWidgetOpen, widgetOpen }) {
         return () => document.removeEventListener("mousedown", handleOutsideClick);
     }, []);
 
-    useEffect(() => {
+    if (widgetOpen) {
         document.body.style.overflow = widgetOpen ? "hidden" : "auto"
-    }, [widgetOpen]);
+    }
 
     return (
         <div className='fixed z-100 bottom-[120px] right-5 max-md:right-0 max-md:bottom-0 max-md:w-full'>
@@ -100,22 +98,8 @@ export default function InstantCallBackModal({ setWidgetOpen, widgetOpen }) {
                                         errors?.email && <ErrorMessage />
                                     }
                                 </div>
-                                {/* <div>
-                                    <textarea
-                                        className='outline-none w-full border border-gray-300 rounded-md px-3 py-2'
-                                        type='text'
-                                        rows={3}
-                                        placeholder='Message'
-                                        {...register("message", {
-                                            required: "*This field is required"
-                                        })}
-                                    />
-                                    {
-                                        errors?.message && <ErrorMessage />
-                                    }
-                                </div> */}
                             </div>
-                            <div className='flex items-end justify-end mt-8'>
+                            <div className='mt-8'>
                                 <button
                                     className='text-white bg-[#2A2742] px-10 py-2 rounded-md cursor-pointer'
                                     type='submit'

@@ -1,7 +1,7 @@
 'use client';
 
 import { usePathname, useRouter } from 'next/navigation';
-import React from 'react';
+import React, { useCallback } from 'react';
 import { FaHome } from "react-icons/fa";
 
 export default function BreadCrumb() {
@@ -10,7 +10,7 @@ export default function BreadCrumb() {
     const pathName = usePathname();
     // console.log("Path Name", pathName)
 
-    const handleDynamicHeading = () => {
+    const handleDynamicHeading = useCallback(() => {
         switch (pathName) {
             case '/business-enquiry':
                 return "Business Enquiry";
@@ -28,12 +28,30 @@ export default function BreadCrumb() {
                 return 'Refund Policy'
             case '/cancellationPolicy':
                 return 'Cancellation Policy'
+            case '/web-development':
+                return 'Web Development'
+            case '/eCommerce-development':
+                return 'E-Commerce Development'
+            case '/graphic-design':
+                return 'Graphic Design'
+            case '/mobileApp-development':
+                return 'Mobile App Development'
+            case '/saas-development':
+                return 'SaaS Development'
+            case '/consultancy-services':
+                return 'Consultancy Services'
+            case '/corporate-services':
+                return 'Corporate Services'
+            case '/cloud-solutions':
+                return 'Cloud Solutions'
+            case '/edu-tech-Solutions':
+                return "Edu-Tech Solutions"
         }
-    }
+    }, [pathName])
 
     return (
         <>
-            <div className='flex items-center gap-2 pt-2 pl-[2.5rem]'>
+            <div className='flex items-center gap-2 pt-2'>
                 <div
                     className='flex items-center gap-1 text-blue-500 cursor-pointer'
                     onClick={() => navigate.push("/")}

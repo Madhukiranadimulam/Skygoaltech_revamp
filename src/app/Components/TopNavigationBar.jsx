@@ -130,9 +130,6 @@ export default function TopNavigationBar() {
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
 
-    // console.log("Is Home", isHome)
-    // console.log("Bg complete", bgImgComplete)
-
     const handleNavigation = (path) => {
         // console.log("Path from Home Page", path === "");
         // console.log("Is Home", isHome)
@@ -162,14 +159,14 @@ export default function TopNavigationBar() {
                         {topNavPaths?.map((item, index) => (
                             <li key={index} className="relative group">
                                 <button
-                                    className={`${(item?.name !== 'Services' && item?.name !== 'Contact Us') && 'hoverLine'} flex items-center gap-1 font-medium text-base xl:text-lg cursor-pointer`}
+                                    className={`${(item?.name !== 'Services' && item?.name !== 'Contact Us') && 'hoverLine'} flex items-center gap-1 font-medium text-base relative xl:text-lg cursor-pointer`}
                                     onClick={() => handleNavigation(item?.path)}
                                 >
                                     {item?.name} {item?.icon}
                                 </button>
 
                                 {item?.subPathNames?.length > 0 && (
-                                    <ul className="absolute hidden min-w-min text-nowrap hover:transition-all hover:duration-500 group-hover:flex flex-col bg-white text-black/70 font-medium p-2 shadow-lg z-10 rounded-md">
+                                    <ul className="dropdown-menu absolute hidden min-w-min text-nowrap group-hover:flex flex-col bg-white text-black/70 font-medium p-2 shadow-lg z-10 rounded-md">
                                         {item?.subPathNames?.map((subItem) => (
                                             <li key={subItem?.sub_Path}>
                                                 <Link

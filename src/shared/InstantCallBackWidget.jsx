@@ -10,7 +10,7 @@ export default function InstantCallBackWidget() {
     const [widgetOpen, setWidgetOpen] = useState(false);
 
     const handleWidget = () => {
-        setWidgetOpen(true);
+        setWidgetOpen((prev) => !prev);
     }
 
     return (

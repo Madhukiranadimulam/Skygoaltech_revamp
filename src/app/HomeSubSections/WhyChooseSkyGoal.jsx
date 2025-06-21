@@ -1,11 +1,14 @@
 'use client';
 
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
 import whyChooseUsImage from '../../assets/whyChooseUs-img.png';
 import './Home.css';
 
 export default function WhyChooseSkyGoal() {
+
+    const eleRef = useRef(null);
+    const [containerVisible, setContainerVisible] = useState(false);
 
     const targetValues = {
         clients: 200,
@@ -23,33 +26,47 @@ export default function WhyChooseSkyGoal() {
 
     useEffect(() => {
         // window.con
-        const interval = setInterval(() => {
-            setCounters(prev => {
-                // console.log("Prev", { ...prev })
-                const updated = { ...prev };
-                let allReached = true;
+        if (containerVisible) {
+            const interval = setInterval(() => {
+                setCounters(prev => {
+                    // console.log("Prev", { ...prev })
+                    const updated = { ...prev };
+                    let allReached = true;
 
-                for (const key in updated) {
-                    if (updated[key] < targetValues[key]) {
-                        updated[key]++;
-                        allReached = false;
+                    for (const key in updated) {
+                        if (updated[key] < targetValues[key]) {
+                            updated[key]++;
+                            allReached = false;
+                        }
                     }
-                }
 
-                if (allReached) {
-                    clearInterval(interval);
-                }
+                    if (allReached) {
+                        clearInterval(interval);
+                    }
 
-                return updated;
-            });
-        }, 10);
+                    return updated;
+                });
+            }, 10);
 
-        return () => clearInterval(interval);
-    }, []);
+            return () => clearInterval(interval);
+        }
+    }, [containerVisible]);
+
+    useEffect(() => {
+        const checkInView = () => {
+            const rect = eleRef?.current?.getBoundingClientRect();
+            const visible = rect?.top < (window.innerHeight - 650) && rect?.bottom >= 0;
+            setContainerVisible(visible);
+        }
+        document.addEventListener("scroll", checkInView);
+        return () => {
+            document.removeEventListener("scroll", checkInView);
+        };
+    }, [])
 
     return (
-        <div>
-            <h3 className="mt-[-5rem] mb-[1rem] text-center text-[#00000099] font-bold text-[35px] max-md:text-3xl">Why Choose Us</h3>
+        <div ref={eleRef}>
+            <h3 className="mb-[1rem] text-center text-[#00000099] font-bold text-[35px] max-md:text-3xl">Why Choose Us</h3>
             <div className='pt-4 mx-[-2rem]'>
                 <Image
                     className='w-full'
@@ -77,9 +94,7 @@ export default function WhyChooseSkyGoal() {
                     <span className='text-[#18191F] font-semibold text-base max-md:text-sm'>Dedicated Members</span>
                 </div>
                 <div>
-                    <div>
-                        <span className="whyChooseContentNumStyles text-[#2C5170]">{counters?.years}</span>
-                    </div>
+                    <p className="whyChooseContentNumStyles text-[#2C5170]">{counters?.years}</p>
                     <span className='text-[#18191F] font-semibold text-base max-md:text-sm'>Glorious Years</span>
                 </div>
             </div>

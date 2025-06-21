@@ -1,5 +1,6 @@
 import React from 'react';
 import serviceImg from '../../assets/consultancyServices-img.jpg';
+import BreadCrumb from '../Components/BreadCrumb';
 
 export default function page() {
 
@@ -13,6 +14,9 @@ export default function page() {
                 />
             </div>
             <div className='px-[5rem] my-[3rem] max-md:px-[2rem]'>
+                <div className='pb-[1rem]'>
+                    <BreadCrumb />
+                </div>
                 <div>
                     <h3 className='text-xl font-bold md:text-2xl'>Consultancy Services</h3>
                     <div className='pl-[2rem]'>

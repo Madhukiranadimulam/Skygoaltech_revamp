@@ -16,7 +16,7 @@ export default function Footer() {
     const navigate = useRouter();
     const pathName = usePathname();
 
-    const fullYear = new Date().getFullYear();
+    // const [currentYear, setCurrentYear] = useState("");
 
     const handleLogoClick = () => {
         if (pathName === '/') {
@@ -52,6 +52,11 @@ export default function Footer() {
             size: "27.2"
         },
     ]
+
+    // useEffect(() => {
+    //     const fullYear = new Date().getFullYear();
+    //     setCurrentYear(fullYear);
+    // }, [])
 
     return (
         <footer className='mt-[50px] w-full bg-[#2A2742] text-white'>
@@ -133,7 +138,7 @@ export default function Footer() {
                     ))}
                 </div>
                 <div className='w-full py-5'>
-                    <p className='text-center'>© {fullYear} Sky Goal INC. All rights reserved.</p>
+                    <p className='text-center'>© 2025 Sky Goal INC. All rights reserved.</p>
                 </div>
             </div>
         </footer>

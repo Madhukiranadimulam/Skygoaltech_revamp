@@ -7,8 +7,8 @@ export default function page() {
             <div className='pb-8'>
                 <BreadCrumb />
             </div>
-            <header className='text-3xl font-semibold'>Refund Policy
-            </header>
+            <h3 className='text-3xl font-semibold'>Refund Policy
+            </h3>
             <div className='pt-[2rem] flex flex-col gap-6 pl-8'>
 
                 <p className='text-base'>At <strong>SKYGOAL INNOVA TECHNOLOGIES PRIVATE LIMITED,</strong> we strive to deliver high-quality products and services that meet your expectations. However, if for any reason you are not completely satisfied with your purchase, we offer a <strong>24-hour money-back guarantee</strong>.</p>

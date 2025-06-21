@@ -7,7 +7,7 @@ export default function page() {
             <div className='pb-8'>
                 <BreadCrumb />
             </div>
-            <header className='text-3xl font-semibold'>Terms and Conditions</header>
+            <h3 className='text-3xl font-semibold'>Terms and Conditions</h3>
             <div className='pt-[2rem] flex flex-col gap-3'>
 
                 <div className='space-y-3'>

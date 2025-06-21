@@ -35,3 +35,19 @@
 .hoverLine:hover::after {
     width: 100%;
 }
+
+.dropdown-menu {
+    animation: growDown 300ms ease-in-out forwards;
+    transform-origin: top center;
+    left: -50%
+}
+
+@keyframes growDown {
+    0% {
+        transform: scaleY(0)
+    }
+
+    100% {
+        transform: scaleY(1)
+    }
+}

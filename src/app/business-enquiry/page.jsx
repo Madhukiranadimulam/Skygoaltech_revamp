@@ -1,12 +1,15 @@
 'use client';
 
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import BreadCrumb from '../Components/BreadCrumb';
 import { useForm, Controller } from 'react-hook-form';
 import ErrorMessage from '../../shared/ErrorMessage.jsx';
 import toast, { Toaster } from 'react-hot-toast';
+import CustomThreeDotsLoader from '@/shared/CustomThreeDotsLoader';
 
 export default function page() {
+
+    const [isLoading, setIsLoading] = useState(false);
 
     const {
         register,
@@ -71,11 +74,13 @@ export default function page() {
             phone: data?.mobileNumber,
             designation: data?.designation,
             companyName: data?.companyName,
-            service: data?.service,
-            formMessage: data?.message
+            selectedService: data?.service,
+            otherService: data?.service === "others" ? data?.otherService : "",
+            message: data?.message
         };
         try {
-            const response = await fetch('/api/sendWhatsApp', {
+            setIsLoading(true);
+            const response = await fetch('/api/sendBusinessFormToCliq', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -88,11 +93,12 @@ export default function page() {
                 throw new Error(errorResult?.message);
             }
             const result = await response.json();
-            console.log("Form data sent to WhatsApp", result);
+            console.log("Form data sent", result);
             toast(result?.message);
         } catch (error) {
-            console.error("Error while sending data to whatsapp", error);
+            console.error("Error while sending data", error);
         }
+        setIsLoading(false);
         reset();
     }
 
@@ -100,9 +106,9 @@ export default function page() {
         <div className='mt-[-7rem] ml-[2rem] max-lg:ml-[0rem]'>
             <BreadCrumb />
             <div className='px-[6rem] pt-[3rem] max-lg:pr-[2rem] max-lg:pl-[2rem]'>
-                <header className='text-[34px] font-semibold'>Business Enquiry</header>
+                <h3 className='text-[34px] font-semibold'>Business Enquiry</h3>
                 <div className='w-full pt-4 flex items-start justify-between gap-[3rem] max-lg:flex-col'>
-                    <div className='w-4/5 bg-[#383066] text-white rounded-xl max-lg:w-full max-lg:mb-[4rem] max-lg:order-2'>
+                    <div className='w-4/5 bg-[#393559] text-white rounded-xl max-lg:w-full max-lg:mb-[4rem] max-lg:order-2'>
                         <div className='flex flex-col justify-between gap-6 px-[3rem] py-[4rem] max-lg:flex max-lg:flex-row max-lg:items-start max-lg:flex-wrap max-sm:px-[1.5rem]'>
                             <div className='space-y-1'>
                                 <p className='text-xl font-semibold'>India</p>
@@ -165,15 +171,24 @@ export default function page() {
                                     <div className='w-full'>
                                         <input
                                             className='w-full outline-none border border-gray-400 rounded-md px-4 py-2'
-                                            type='number'
+                                            type='text'
+                                            inputMode="numeric"
                                             placeholder='Mobile Number'
                                             name='number'
                                             {...register('mobileNumber', {
                                                 required: "*This field is required",
+                                                pattern: {
+                                                    value: /^[0-9]+$/,
+                                                    message: "Only numeric values are allowed",
+                                                },
+                                                minLength: {
+                                                    value: 10,
+                                                    message: "Must be at least 10 digits",
+                                                },
                                             })}
                                         />
                                         {errors?.mobileNumber &&
-                                            <ErrorMessage />
+                                            <p className='text-red-400 font-medium text-[13px]'>{errors?.mobileNumber?.message}</p>
                                         }
                                     </div>
                                     <div className='w-full'>
@@ -264,12 +279,18 @@ export default function page() {
                                 </div>
                             </div>
                             <div className='flex justify-end pt-[5rem] max-lg:pt-[2rem]'>
-                                <button
-                                    className='text-black hover:text-white border border-gray-400 rounded-lg text-base text-center px-12 py-3 hover:bg-[#4F4B6A] cursor-pointer'
-                                    type='submit'
-                                >
-                                    Submit
-                                </button>
+                                {isLoading ?
+                                    <div>
+                                        <CustomThreeDotsLoader />
+                                    </div>
+                                    :
+                                    <button
+                                        className='text-black hover:text-white border border-gray-400 rounded-lg text-base text-center px-12 py-3 hover:bg-[#4F4B6A] cursor-pointer'
+                                        type='submit'
+                                    >
+                                        Submit
+                                    </button>
+                                }
                             </div>
                         </form>
                     </div>
