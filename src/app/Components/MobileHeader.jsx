@@ -5,8 +5,7 @@ import Image from 'next/image';
 import { useState } from 'react';
 import { RxHamburgerMenu } from "react-icons/rx";
 import MobileViewSideBar from './MobileViewSideBar';
-import { useRouter } from 'next/navigation';
-import { usePathname } from 'next/navigation';
+import { useRouter, usePathname } from 'next/navigation';
 
 export default function MobileHeader() {
 
@@ -19,7 +18,7 @@ export default function MobileHeader() {
         setMobileNavOpen(true);
     }
 
-    const handleNavigation = () => {
+    const handleLogoNavigation = () => {
         // console.log("Path from Home Page", path);
         if (pathName === '/') {
             window.scrollTo({ top: 0, behavior: "smooth" })
@@ -33,7 +32,7 @@ export default function MobileHeader() {
         <>
             <div className='fixed z-100 w-full bg-white border-b border-b-gray-300 px-[3rem] py-2 max-sm:px-[1.5rem]'>
                 <div className='flex items-center justify-between'>
-                    <div onClick={handleNavigation}>
+                    <div onClick={handleLogoNavigation}>
                         <Image src={sky_logo} alt="Sky-Goal Logo" className='w-32 max-sm:w-28' />
                     </div>
                     <button

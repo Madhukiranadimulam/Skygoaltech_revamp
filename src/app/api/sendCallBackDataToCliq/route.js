@@ -5,29 +5,16 @@ export async function POST(req) {
             name,
             email,
             phone,
-            designation,
-            companyName,
-            selectedService,
-            otherService,
-            message,
         } = body;
 
-        const service =
-            selectedService === "others"
-                ? `others - ${otherService}`
-                : selectedService;
-
-        const webhookURL = process.env.ZOHO_CLIQ_WEBHOOK_URL_FOR_BUSINESS_ENQUIRY_FORM;
+        const webhookURL = process.env.ZOHO_CLIQ_WEBHOOK_URL_FOR_CALLBACK;
 
         const payload = {
-            text: `Business Enquiry Form Submission Details:
+            text: `Data:
         Name: ${name}
         Email: ${email}
         Phone: ${phone}
-        Designation: ${designation}
-        Company: ${companyName}
-        Service: ${service},
-        Message: ${message}`,
+        `
         };
 
         const response = await fetch(webhookURL, {
@@ -51,7 +38,7 @@ export async function POST(req) {
         return new Response(
             JSON.stringify({
                 success: true,
-                message: "Enquiry submitted successfully. We’ll be in touch soon.",
+                message: "Form submitted successfully. We’ll be in touch soon.",
             }),
             { status: 200 }
         );

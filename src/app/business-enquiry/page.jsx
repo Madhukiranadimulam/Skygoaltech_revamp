@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import BreadCrumb from '../Components/BreadCrumb';
 import { useForm, Controller } from 'react-hook-form';
 import ErrorMessage from '../../shared/ErrorMessage.jsx';
@@ -105,7 +105,7 @@ export default function page() {
     return (
         <div className='mt-[-7rem] ml-[2rem] max-lg:ml-[0rem]'>
             <BreadCrumb />
-            <div className='px-[6rem] pt-[3rem] max-lg:pr-[2rem] max-lg:pl-[2rem]'>
+            <div className='px-[6rem] pt-[3rem] max-lg:px-[2rem]'>
                 <h3 className='text-[34px] font-semibold'>Business Enquiry</h3>
                 <div className='w-full pt-4 flex items-start justify-between gap-[3rem] max-lg:flex-col'>
                     <div className='w-4/5 bg-[#393559] text-white rounded-xl max-lg:w-full max-lg:mb-[4rem] max-lg:order-2'>
@@ -280,9 +280,7 @@ export default function page() {
                             </div>
                             <div className='flex justify-end pt-[5rem] max-lg:pt-[2rem]'>
                                 {isLoading ?
-                                    <div>
-                                        <CustomThreeDotsLoader />
-                                    </div>
+                                    <CustomThreeDotsLoader />
                                     :
                                     <button
                                         className='text-black hover:text-white border border-gray-400 rounded-lg text-base text-center px-12 py-3 hover:bg-[#4F4B6A] cursor-pointer'

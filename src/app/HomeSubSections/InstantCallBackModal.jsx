@@ -1,13 +1,17 @@
 'use client';
 
 import ErrorMessage from '../../shared/ErrorMessage.jsx';
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import callBackFormImg from '../../assets/callBackForm-img.png';
 import Image from 'next/image.js';
 import { RxCross1 } from "react-icons/rx";
+import toast, { Toaster } from 'react-hot-toast';
+import CustomThreeDotsLoader from '../../shared/CustomThreeDotsLoader.jsx';
 
 export default function InstantCallBackModal({ setWidgetOpen, widgetOpen }) {
+
+    const [isLoading, setIsLoading] = useState(false);
 
     const {
         register,
@@ -18,11 +22,37 @@ export default function InstantCallBackModal({ setWidgetOpen, widgetOpen }) {
 
     const handleCancelModal = () => {
         setWidgetOpen(false);
-        document.body.style.overflow = "auto";
     }
 
-    const onSubmit = (data) => {
+    const onSubmit = async (data) => {
         console.log("Data from HomePage", data);
+        const formData = {
+            name: data?.name,
+            email: data?.email,
+            phone: data?.mobileNumber,
+        };
+        try {
+            setIsLoading(true);
+            const response = await fetch('/api/sendCallBackDataToCliq', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(formData),
+            });
+            if (!response.ok) {
+                const errorResult = await response.json();
+                toast(errorResult?.message);
+                throw new Error(errorResult?.message);
+            }
+            const result = await response.json();
+            console.log("Form data sent", result);
+            toast(result?.message);
+        } catch (error) {
+            console.error("Error while sending data", error);
+        }
+        setIsLoading(false);
+        reset();
     }
 
     const handleOutsideClick = (event) => {
@@ -39,17 +69,23 @@ export default function InstantCallBackModal({ setWidgetOpen, widgetOpen }) {
         return () => document.removeEventListener("mousedown", handleOutsideClick);
     }, []);
 
-    if (widgetOpen) {
-        document.body.style.overflow = widgetOpen ? "hidden" : "auto"
-    }
+    useEffect(() => {
+        if (widgetOpen) {
+            document.body.style.overflow = "hidden";
+        } else {
+            document.body.style.overflow = "auto";
+        }
+
+        return () => {
+            document.body.style.overflow = "auto";
+        };
+    }, [widgetOpen]);
 
     return (
         <div className='fixed z-100 bottom-[120px] right-5 max-md:right-0 max-md:bottom-0 max-md:w-full'>
             <div className='bg-white w-[450px] shadow-md max-md:w-full rounded-lg px-[2rem] py-[3rem] max-lg:py-[1.5rem] outsideClick'>
                 <div className='w-full flex items-end justify-end md:hidden'>
-                    <button className='cursor-pointer'>
-                        <RxCross1 className='text-[1.5rem]' onClick={handleCancelModal} />
-                    </button>
+                    <RxCross1 className='text-[1.5rem] cursor-pointer' onClick={handleCancelModal} />
                 </div>
                 <div>
                     <h4 className='text-2xl max-lg:text-lg'>NEED A SERVICE?</h4>
@@ -100,20 +136,22 @@ export default function InstantCallBackModal({ setWidgetOpen, widgetOpen }) {
                                 </div>
                             </div>
                             <div className='mt-8'>
-                                <button
-                                    className='text-white bg-[#2A2742] px-10 py-2 rounded-md cursor-pointer'
-                                    type='submit'
-                                >
-                                    Submit
-                                </button>
+                                {isLoading ?
+                                    <CustomThreeDotsLoader />
+                                    :
+                                    <button
+                                        className='text-white bg-[#2A2742] px-10 py-2 rounded-md cursor-pointer'
+                                        type='submit'
+                                    >
+                                        Submit
+                                    </button>
+                                }
                             </div>
                         </form>
                     </div>
                     <div className='w-[200px] h-[165px] max-lg:w-full bg-[#2A2742] max-lg:order-1'>
                         <Image
                             src={callBackFormImg}
-                            // height={250}
-                            // width={200}
                             className='w-[190px] h-[160px] object-contain max-lg:w-full'
                             loading='eager'
                             alt='callBackFormImg'
@@ -121,6 +159,7 @@ export default function InstantCallBackModal({ setWidgetOpen, widgetOpen }) {
                     </div>
                 </div>
             </div>
+            <Toaster />
         </div>
     )
 }

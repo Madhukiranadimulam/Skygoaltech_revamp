@@ -2,32 +2,15 @@ export async function POST(req) {
     try {
         const body = await req.json();
         const {
-            name,
             email,
-            phone,
-            designation,
-            companyName,
-            selectedService,
-            otherService,
-            message,
         } = body;
 
-        const service =
-            selectedService === "others"
-                ? `others - ${otherService}`
-                : selectedService;
-
-        const webhookURL = process.env.ZOHO_CLIQ_WEBHOOK_URL_FOR_BUSINESS_ENQUIRY_FORM;
+        const webhookURL = process.env.ZOHO_CLIQ_WEBHOOK_URL_FOR_JOIN_SKYGOAL_TODAY;
 
         const payload = {
-            text: `Business Enquiry Form Submission Details:
-        Name: ${name}
+            text: `Data:
         Email: ${email}
-        Phone: ${phone}
-        Designation: ${designation}
-        Company: ${companyName}
-        Service: ${service},
-        Message: ${message}`,
+        `
         };
 
         const response = await fetch(webhookURL, {
@@ -51,7 +34,7 @@ export async function POST(req) {
         return new Response(
             JSON.stringify({
                 success: true,
-                message: "Enquiry submitted successfully. We’ll be in touch soon.",
+                message: "Mail sent successfully. We’ll be in touch soon.",
             }),
             { status: 200 }
         );

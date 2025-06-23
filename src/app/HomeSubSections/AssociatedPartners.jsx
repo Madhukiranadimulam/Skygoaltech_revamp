@@ -8,7 +8,6 @@ import icici_logo from '../../assets/icici_logo.svg';
 import googleLogo from '../../assets/googleLogo.svg';
 import Image from 'next/image';
 
-
 export default function AssociatedPartners() {
 
     const associatedPartnersLogos = [
@@ -51,8 +50,8 @@ export default function AssociatedPartners() {
     ]
 
     return (
-        <div className=''>
-            <h3 className='text-center text-[35px] font-semibold max-md:text-2xl'>Associated With</h3>
+        <>
+            <h3 className='text-center text-[#00000099] text-[35px] font-semibold max-md:text-2xl'>Associated With</h3>
             <div className='py-[3rem]'>
                 <Marquee
                     pauseOnHover={true}
@@ -71,6 +70,6 @@ export default function AssociatedPartners() {
                     ))}
                 </Marquee>
             </div>
-        </div>
+        </>
     )
 }

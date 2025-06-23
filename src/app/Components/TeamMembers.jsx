@@ -257,7 +257,6 @@ export default function TeamMembers() {
                         alt="team-members-imgs"
                         loading='lazy'
                         placeholder='blur'
-                        blurDataURL={"https://www.google.com/imgres?q=placeholder%20image%20for%20website%20images%20background%20in%20http%20link&imgurl=https%3A%2F%2Fmedia.istockphoto.com%2Fid%2F1409329028%2Fvector%2Fno-picture-available-placeholder-thumbnail-icon-illustration-design.jpg%3Fs%3D612x612%26w%3D0%26k%3D20%26c%3D_zOuJu755g2eEUioiOUdz_mHKJQJn-tDgIAhQzyeKUQ%3D&imgrefurl=https%3A%2F%2Fwww.istockphoto.com%2Fphotos%2Fplaceholder-image&docid=kN3AEnoSte6eMM&tbnid=dAqPcR9ZqydOBM&vet=12ahUKEwiX65n1qNWNAxUowTgGHWH4EyoQM3oECBcQAA..i&w=612&h=437&hcb=2&ved=2ahUKEwiX65n1qNWNAxUowTgGHWH4EyoQM3oECBcQAA#imgrc=dAqPcR9ZqydOBM&imgdii=9scPpi-BJiDxwM"}
                     />
                     <div className="left-0 w-full overflow-hidden rounded-b-lg">
                         <div

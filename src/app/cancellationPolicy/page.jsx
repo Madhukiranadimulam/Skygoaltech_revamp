@@ -23,7 +23,6 @@ export default function page() {
                         </p>
                     </div>
 
-
                     <div className='space-y-3'>
                         <h4 className='text-xl font-medium'>2. Operational Stage Restriction
                         </h4>
@@ -31,14 +30,12 @@ export default function page() {
                         </p>
                     </div>
 
-
                     <div className='space-y-3'>
                         <h4 className='text-xl font-medium'>3. Refund Consideration
                         </h4>
                         <p className='pl-8'>All cancellations and any associated refund requests will be strictly subject to the terms outlined in our Refund Policy, which may be updated or revised periodically. Customers are advised to review the most recent version of the <strong>Refund Policy</strong> available on our official website or upon request.
                         </p>
                     </div>
-
 
                     <div className='space-y-3'>
                         <h4 className='text-xl font-medium'>4. Same-Day Delivery Orders
@@ -48,14 +45,12 @@ export default function page() {
                         </p>
                     </div>
 
-
                     <div className='space-y-3'>
                         <h4 className='text-xl font-medium'>5. Promotional and Discounted Offers
                         </h4>
                         <p className='pl-8'>Products or services purchased under <strong>special promotional offers</strong> or discounts—particularly during festive or special occasions such as <strong>New Year</strong>, <strong>Pongal</strong>, <strong>Diwali</strong>, <strong>Independence Day</strong>, <strong>Foundation Day</strong>, and similar events—are <strong>non-cancellable</strong>. These offers are time-sensitive and tailored for specific events, making them ineligible for cancellation or modification once the order is confirmed.
                         </p>
                     </div>
-
 
                     <div className='space-y-3'>
                         <h4 className='text-xl font-medium'>6. Special Circumstances

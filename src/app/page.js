@@ -4,7 +4,6 @@ import MobileViewHomePage from "./HomeSubSections/MobileViewHomePage";
 import SomeOfOurClients from "./HomeSubSections/SomeOfOurClients";
 import Testimonials from "./HomeSubSections/Testimonials";
 import WhyChooseSkyGoal from "./HomeSubSections/WhyChooseSkyGoal";
-import dynamic from "next/dynamic";
 
 export default function Home() {
 

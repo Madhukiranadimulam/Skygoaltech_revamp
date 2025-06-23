@@ -111,17 +111,11 @@ export default function TopNavigationBar() {
                 setBgImgComplete(false);
                 return;
             } else {
-                // // console.log("inside")
-                // console.log("Scroll Y", scrollY);
-                // console.log("Hero He", heroHeight)
                 if (scrollY > heroHeight) {
                     setBgImgComplete(true);
                     setShowNavbar(false);
                     // console.log("Screen Completed")
                     return;
-                } else {
-                    // setShowNavbar(false);
-                    // setBgImgComplete(false);
                 }
             }
         };
@@ -131,8 +125,6 @@ export default function TopNavigationBar() {
     }, []);
 
     const handleNavigation = (path) => {
-        // console.log("Path from Home Page", path === "");
-        // console.log("Is Home", isHome)
         if (isHome && (path === '/') || path === "") {
             window.scrollTo({ top: 0 })
             return;

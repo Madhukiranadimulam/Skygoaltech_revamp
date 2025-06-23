@@ -47,7 +47,7 @@ export default function BreadCrumb() {
             case '/edu-tech-Solutions':
                 return "Edu-Tech Solutions"
         }
-    }, [pathName])
+    }, [pathName]);
 
     return (
         <>

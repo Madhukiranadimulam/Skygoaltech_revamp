@@ -16,8 +16,6 @@ export default function Footer() {
     const navigate = useRouter();
     const pathName = usePathname();
 
-    // const [currentYear, setCurrentYear] = useState("");
-
     const handleLogoClick = () => {
         if (pathName === '/') {
             window.scrollTo({ top: 0, behavior: "smooth" });
@@ -53,11 +51,6 @@ export default function Footer() {
         },
     ]
 
-    // useEffect(() => {
-    //     const fullYear = new Date().getFullYear();
-    //     setCurrentYear(fullYear);
-    // }, [])
-
     return (
         <footer className='mt-[50px] w-full bg-[#2A2742] text-white'>
             <div className='mx-[10rem] max-lg:mx-[3rem]'>
@@ -73,7 +66,7 @@ export default function Footer() {
                                 src={skyLogo}
                                 width={120}
                                 loading='lazy'
-                                alt='skygoal-logo'
+                                alt='SkyGoal-logo'
                             />
                         </div>
                         <p className='py-4 w-[300px] max-md:w-[270px]'>SkygoalTech is a solution provider for digital transformation. We help you to deliver next generation products, services and ideas. Our collaborative method of delivery with our extended team of partners enables us to ensure that we understand what is required by you.</p>
@@ -83,8 +76,6 @@ export default function Footer() {
                         <div className="flex flex-col gap-3 pt-2">
                             <Link className="no-underline hoverColor" href="/aboutUs">About us</Link>
                             <Link className="no-underline hoverColor" href="https://careers.skygoaltech.com/jobs/Careers" target='_blank'>Careers</Link>
-                            {/* <Link className="no-underline hoverColor" href="/portfolio">portfolio</Link>
-                            <Link className="no-underline hoverColor" href="#">Blog</Link> */}
                         </div>
                     </div>
                     <div className=''>
