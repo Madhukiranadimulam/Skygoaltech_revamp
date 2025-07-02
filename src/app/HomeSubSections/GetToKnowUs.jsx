@@ -5,7 +5,7 @@ import Image from 'next/image';
 export default function GetToKnowUs() {
 
     return (
-        <div className='w-full flex items-start justify-between gap-[4rem] mt-[-4rem] mb-[2rem] px-[4rem] max-lg:flex-wrap max-lg:px-[2rem]'>
+        <div className='w-full flex items-start justify-between gap-[4rem] mt-[4rem] mb-[2rem] px-[4rem]        max-lg:flex-wrap max-lg:px-[2rem]'>
             <Image
                 src={getToKnowUs_Img}
                 alt='getToKnowUs-Img'

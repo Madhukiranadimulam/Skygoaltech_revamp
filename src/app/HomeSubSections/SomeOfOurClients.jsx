@@ -93,7 +93,6 @@ export default function SomeOfOurClients() {
                     {someOfOurClientImgs?.map((item) => (
                         <Image
                             key={item?.no}
-                            className=''
                             src={item?.img}
                             alt={item?.alt}
                             width={250}

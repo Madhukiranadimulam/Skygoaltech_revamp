@@ -8,7 +8,7 @@ import TeamMembers from '../Components/TeamMembers';
 
 export default function page() {
     return (
-        <div className='mt-[-7rem] ml-[2rem] mb-[4rem] max-lg:ml-[0rem]'>
+        <div className='mt-[9rem] ml-[2rem] mb-[4rem] max-lg:ml-[0rem]'>
             <BreadCrumb />
             <div>
                 <div className='flex flex-col gap-[5rem] pt-[5rem] px-[10rem] max-lg:px-[3rem]'>

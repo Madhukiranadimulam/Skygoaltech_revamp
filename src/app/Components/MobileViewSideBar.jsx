@@ -61,10 +61,10 @@ export default function MobileViewSideBar({ setMobileNavOpen }) {
                 },
             ]
         },
-        {
-            name: "Case Study and Blog",
-            path: "/caseStudyAndBlogs"
-        },
+        // {
+        //     name: "Case Study and Blog",
+        //     path: "/caseStudyAndBlogs"
+        // },
         {
             name: "About Us",
             path: "/aboutUs"

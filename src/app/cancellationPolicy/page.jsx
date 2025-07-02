@@ -3,7 +3,7 @@ import BreadCrumb from '../Components/BreadCrumb'
 
 export default function page() {
     return (
-        <div className='mt-[-7rem] mx-14 mb-[3rem]'>
+        <div className='mt-[9rem] mx-14 mb-[3rem]'>
             <div className='pb-8'>
                 <BreadCrumb />
             </div>

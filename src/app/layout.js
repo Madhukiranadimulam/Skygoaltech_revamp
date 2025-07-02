@@ -31,7 +31,7 @@ export default function RootLayout({ children }) {
         <div className="w-full lg:hidden">
           <MobileHeader />
         </div>
-        <main className="w-full pt-[10rem] min-h-screen overflow-y-auto overflow-x-hidden">{children}</main>
+        <main className="w-full min-h-screen overflow-y-auto overflow-x-hidden">{children}</main>
         <InstantCallBackWidget />
         <JoinSkygoalToday />
         <Footer />

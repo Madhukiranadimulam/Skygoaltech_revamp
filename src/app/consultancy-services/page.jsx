@@ -6,11 +6,11 @@ export default function page() {
 
     return (
         <>
-            <div className="w-full mt-[-10rem] h-[70vh] xl:h-[80vh]">
+            <div className="w-full mt-[6rem] h-[70vh] xl:h-[80vh] flex items-center justify-center">
                 <img
                     src={serviceImg.src}
                     alt="consultancy-img"
-                    className="w-full h-full"
+                    className="w-full h-full object-cover"
                 />
             </div>
             <div className='px-[5rem] my-[3rem] max-md:px-[2rem]'>

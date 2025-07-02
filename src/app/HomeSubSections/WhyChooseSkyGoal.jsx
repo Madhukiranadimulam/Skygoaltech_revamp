@@ -14,39 +14,50 @@ export default function WhyChooseSkyGoal() {
         clients: 200,
         projects: 540,
         dedicatedPersons: 50,
-        years: 7
+        years: 7,
     };
 
-    const [counters, setCounters] = useState({
+    const initialValues = {
         clients: 100,
         projects: 350,
         dedicatedPersons: 0,
-        years: 0
-    });
+        years: 0,
+    };
+
+    const [counters, setCounters] = useState(initialValues);
 
     useEffect(() => {
-        // window.con
         if (containerVisible) {
+            const duration = 1000; // total time in ms
+            const intervalDelay = 20; // ms
+            const steps = duration / intervalDelay;
+
+            const incrementValues = {
+                clients: (targetValues?.clients - initialValues?.clients) / steps,
+                projects: (targetValues?.projects - initialValues?.projects) / steps,
+                dedicatedPersons: (targetValues?.dedicatedPersons - initialValues?.dedicatedPersons) / steps,
+                years: (targetValues?.years - initialValues?.years) / steps,
+            };
+
+            let currentStep = 0;
+
             const interval = setInterval(() => {
-                setCounters(prev => {
-                    // console.log("Prev", { ...prev })
-                    const updated = { ...prev };
-                    let allReached = true;
+                currentStep++;
 
-                    for (const key in updated) {
-                        if (updated[key] < targetValues[key]) {
-                            updated[key]++;
-                            allReached = false;
-                        }
-                    }
-
-                    if (allReached) {
-                        clearInterval(interval);
-                    }
-
-                    return updated;
+                setCounters((prev) => {
+                    return {
+                        clients: Math.round(prev?.clients + incrementValues?.clients),
+                        projects: Math.round(prev?.projects + incrementValues?.projects),
+                        dedicatedPersons: Math.round(prev?.dedicatedPersons + incrementValues?.dedicatedPersons),
+                        years: Math.round(prev?.years + incrementValues?.years),
+                    };
                 });
-            }, 10);
+
+                if (currentStep >= steps) {
+                    clearInterval(interval);
+                    setCounters(targetValues); // snap to final values
+                }
+            }, intervalDelay);
 
             return () => clearInterval(interval);
         }

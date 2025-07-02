@@ -9,6 +9,8 @@ export async function POST(req) {
 
         const webhookURL = process.env.ZOHO_CLIQ_WEBHOOK_URL_FOR_CALLBACK;
 
+        console.log("Web Hook URL", webhookURL);
+
         const payload = {
             text: `Data:
         Name: ${name}
@@ -25,6 +27,7 @@ export async function POST(req) {
 
         if (!response.ok) {
             const errorText = await response.text();
+            console.log("Error Text", errorText);
             return new Response(
                 JSON.stringify({
                     success: false,
@@ -43,6 +46,7 @@ export async function POST(req) {
             { status: 200 }
         );
     } catch (err) {
+        console.log("Error from Catch Block", err);
         return new Response(
             JSON.stringify({
                 success: false,

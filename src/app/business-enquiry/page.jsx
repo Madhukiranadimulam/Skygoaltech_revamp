@@ -103,9 +103,9 @@ export default function page() {
     }
 
     return (
-        <div className='mt-[-7rem] ml-[2rem] max-lg:ml-[0rem]'>
+        <div className='mt-[9rem] ml-[2rem] max-lg:ml-[0rem]'>
             <BreadCrumb />
-            <div className='px-[6rem] pt-[3rem] max-lg:px-[2rem]'>
+            <div className='px-[6rem] max-lg:px-[2rem]'>
                 <h3 className='text-[34px] font-semibold'>Business Enquiry</h3>
                 <div className='w-full pt-4 flex items-start justify-between gap-[3rem] max-lg:flex-col'>
                     <div className='w-4/5 bg-[#393559] text-white rounded-xl max-lg:w-full max-lg:mb-[4rem] max-lg:order-2'>
