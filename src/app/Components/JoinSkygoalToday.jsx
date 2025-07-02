@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from 'react'
-import toast, { Toaster } from 'react-hot-toast';
+import { toast, ToastContainer } from 'react-toastify';
 
 export default function JoinSkygoalToday() {
 
@@ -25,12 +25,12 @@ export default function JoinSkygoalToday() {
                 });
                 if (!response.ok) {
                     const errorResult = await response.json();
-                    toast(errorResult?.message);
+                    toast.error(errorResult?.message);
                     throw new Error(errorResult?.message);
                 }
                 const result = await response.json();
                 console.log("Email sent", result);
-                toast(result?.message);
+                toast.success(result?.message);
             } catch (error) {
                 console.error("Error while sending data", error);
             }
@@ -67,7 +67,7 @@ export default function JoinSkygoalToday() {
                     </div>
                 </div>
             </div>
-            <Toaster />
+            <ToastContainer />
         </div>
     )
 }

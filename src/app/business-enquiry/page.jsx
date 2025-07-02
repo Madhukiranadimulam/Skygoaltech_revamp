@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import BreadCrumb from '../Components/BreadCrumb';
 import { useForm, Controller } from 'react-hook-form';
 import ErrorMessage from '../../shared/ErrorMessage.jsx';
-import toast, { Toaster } from 'react-hot-toast';
+import { toast, ToastContainer } from 'react-toastify';
 import CustomThreeDotsLoader from '@/shared/CustomThreeDotsLoader';
 
 export default function page() {
@@ -89,12 +89,12 @@ export default function page() {
             });
             if (!response.ok) {
                 const errorResult = await response.json();
-                toast(errorResult?.message);
+                toast.error(errorResult?.message);
                 throw new Error(errorResult?.message);
             }
             const result = await response.json();
             console.log("Form data sent", result);
-            toast(result?.message);
+            toast.success(result?.message);
         } catch (error) {
             console.error("Error while sending data", error);
         }
@@ -294,7 +294,7 @@ export default function page() {
                     </div>
                 </div>
             </div>
-            <Toaster />
+            <ToastContainer />
         </div>
     )
 }

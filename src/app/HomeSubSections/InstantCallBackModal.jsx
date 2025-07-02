@@ -6,7 +6,7 @@ import { useForm } from 'react-hook-form';
 import callBackFormImg from '../../assets/callBackForm-img.png';
 import Image from 'next/image.js';
 import { RxCross1 } from "react-icons/rx";
-import toast, { Toaster } from 'react-hot-toast';
+import { toast, ToastContainer } from 'react-toastify';
 import CustomThreeDotsLoader from '../../shared/CustomThreeDotsLoader.jsx';
 
 export default function InstantCallBackModal({ setWidgetOpen, widgetOpen }) {
@@ -159,7 +159,7 @@ export default function InstantCallBackModal({ setWidgetOpen, widgetOpen }) {
                     </div>
                 </div>
             </div>
-            <Toaster />
+            <ToastContainer />
         </div>
     )
 }
