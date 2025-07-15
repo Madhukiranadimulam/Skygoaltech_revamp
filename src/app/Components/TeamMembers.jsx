@@ -9,7 +9,7 @@ import saiNadh_Img from '../../assets/saiNadh-img.jpg';
 import sandhya_Img from '../../assets/sandhya-img.jpg';
 import mustaq_img from '../../assets/mustaq-img.png';
 import kishore_img from '../../assets/kishore-img.png';
-import sai_img from '../../assets/sai-img.webp';
+import sai_img from '../../assets/sai-img.jpg';
 import nagesh_img from '../../assets/nagesh-img.webp';
 import madhu_img from '../../assets/madhu-img.webp';
 import usha_img from '../../assets/usha-img.png';
@@ -33,6 +33,7 @@ import hariKrishna_img from '../../assets/HariKrishna-img.png';
 import chaitra_img from '../../assets/Chaitra-img.png';
 import priyanka_img from '../../assets/Priyanka-img.jpg';
 import rasagnya_img from '../../assets/Rasagnya-img.png';
+import venu_img from '../../assets/venu-img.jpg';
 
 export default function TeamMembers() {
 
@@ -122,6 +123,12 @@ export default function TeamMembers() {
             name: "Venkatesh",
             designation: "Backend-Developer",
             image: venkatesh_img
+        },
+        {
+            no: 15,
+            name: "Chandu Venkata Venu",
+            designation: "Frontend-Developer",
+            image: venu_img
         },
         {
             no: 16,
