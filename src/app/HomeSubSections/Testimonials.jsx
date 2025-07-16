@@ -61,7 +61,7 @@ export default function Testimonials() {
     ]
 
     return (
-        <div className='bg-[#2A2742] rounded-xl h-[550px] mb-14 mx-[-2rem] overflow-x-visible'>
+        <div className='bg-[#2A2742] rounded-xl h-[550px] mt-10 mb-14 mx-[-2rem] overflow-x-visible'>
             <h4 className='text-white font-semibold text-[35px] text-center pt-8'>TESTIMONIALS</h4>
             <div className='w-full flex items-center'>
                 <Swiper

@@ -7,7 +7,7 @@ import kusumaT_Img from '../../assets/kusumaDM-img.jpeg';
 import umesh_Img from '../../assets/umesh-img.png';
 import saiNadh_Img from '../../assets/saiNadh-img.jpg';
 import sandhya_Img from '../../assets/sandhya-img.jpg';
-import mustaq_img from '../../assets/mustaq-img.png';
+import mustaq_img from '../../assets/mustaq-img.jpg';
 import kishore_img from '../../assets/kishore-img.png';
 import sai_img from '../../assets/sai-img.jpg';
 import nagesh_img from '../../assets/nagesh-img.webp';

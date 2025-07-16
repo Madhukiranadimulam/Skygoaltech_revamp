@@ -36,12 +36,12 @@ export default function JoinSkygoalToday() {
             }
             setEmail("");
         } else {
-            toast("Please Enter a Valid Email Address.");
+            toast.error("Please Enter a Valid Email Address.");
         }
     }
 
     return (
-        <div className='w-full flex items-center justify-center'>
+        <div className='w-full flex items-center justify-center pt-10'>
             <div className='w-[80%] bg-[#2A2742] rounded-3xl py-[4rem] max-md:w-[90%]'>
                 <div className='flex flex-col justify-center items-center gap-6'>
                     <h3 className='text-white text-3xl max-md:text-2xl'>Join Skygoal today!</h3>

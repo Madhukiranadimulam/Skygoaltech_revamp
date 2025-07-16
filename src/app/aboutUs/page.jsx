@@ -11,7 +11,7 @@ export default function page() {
         <div className='mt-[9rem] ml-[2rem] mb-[4rem] max-lg:ml-[0rem]'>
             <BreadCrumb />
             <div>
-                <div className='flex flex-col gap-[5rem] pt-[5rem] px-[10rem] max-lg:px-[3rem]'>
+                <div className='flex flex-col gap-[5rem] pt-[3rem] px-[10rem] max-lg:px-[3rem]'>
                     <div className='flex items-center justify-between gap-[1rem] max-md:flex-wrap'>
                         <div className='flex flex-col gap-5 w-[1000px]'>
                             <h3 className='text-2xl font-semibold'>Our Vision</h3>

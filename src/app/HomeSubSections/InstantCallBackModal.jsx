@@ -42,12 +42,12 @@ export default function InstantCallBackModal({ setWidgetOpen, widgetOpen }) {
             });
             if (!response.ok) {
                 const errorResult = await response.json();
-                toast(errorResult?.message);
+                toast.error(errorResult?.message);
                 throw new Error(errorResult?.message);
             }
             const result = await response.json();
             console.log("Form data sent", result);
-            toast(result?.message);
+            toast.success(result?.message);
         } catch (error) {
             console.error("Error while sending data", error);
         }

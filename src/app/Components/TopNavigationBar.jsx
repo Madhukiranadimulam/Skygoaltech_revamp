@@ -134,53 +134,55 @@ export default function TopNavigationBar() {
     };
 
     return (
-        <div
-            className={`${isHome && "bgHomePage"}`}
-        >
+        <>
             <div
-                className={`fixed flex items-center gap-8 py-2
-                        ${(showNavbar && pathname === '/') ? 'w-[70%] mt-[3rem] left-1/2 transform -translate-x-1/2 transition-all duration-700 ease-in-out justify-between px-[3rem] rounded-[70px] bg-white z-[100]'
-                        : (bgImgComplete || !isHome) ? "w-full justify-between rounded-none px-[4rem] border-b border-b-gray-300 z-50 bg-white" : 'w-[63%] mt-[3rem] left-1/2 transform -translate-x-1/2 transition-all duration-700 ease-in-out px-[2rem] justify-between rounded-full bg-white/40 backdrop-blur-xl text-white z-[50]'
-                    }`}
+                className={`${isHome && "bgHomePage"}`}
             >
-                <div onClick={() => handleNavigation('/')} className='cursor-pointer'>
-                    <Image src={sky_logo} alt="Sky-Goal Logo" className='w-32' />
-                </div>
-                <ul className="flex items-center gap-[2rem]">
-                    {topNavPaths?.map((item, index) => (
-                        <li key={index} className="relative group">
-                            <button
-                                className={`${(item?.name !== 'Services' && item?.name !== 'Contact Us') && 'hoverLine'} flex items-center gap-1 font-medium text-base relative xl:text-lg cursor-pointer`}
-                                onClick={() => handleNavigation(item?.path)}
-                            >
-                                {item?.name} {item?.icon}
-                            </button>
+                <div
+                    className={`fixed flex items-center gap-8 py-2
+                        ${(showNavbar && pathname === '/') ? 'w-[70%] mt-[3rem] left-1/2 transform -translate-x-1/2 transition-all duration-700 ease-in-out justify-between px-[3rem] rounded-[70px] bg-white z-[100]'
+                            : (bgImgComplete || !isHome) ? "w-full justify-between rounded-none px-[4rem] border-b border-b-gray-300 z-50 bg-white" : 'w-[63%] mt-[3rem] left-1/2 transform -translate-x-1/2 transition-all duration-700 ease-in-out px-[2rem] justify-between rounded-full bg-white/40 backdrop-blur-xl text-white z-[50]'
+                        }`}
+                >
+                    <div onClick={() => handleNavigation('/')} className='cursor-pointer'>
+                        <Image src={sky_logo} alt="Sky-Goal Logo" className='w-32' />
+                    </div>
+                    <ul className="flex items-center gap-[2rem]">
+                        {topNavPaths?.map((item, index) => (
+                            <li key={index} className="relative group">
+                                <button
+                                    className={`${(item?.name !== 'Services' && item?.name !== 'Contact Us') && 'hoverLine'} flex items-center gap-1 font-medium text-base relative xl:text-lg cursor-pointer`}
+                                    onClick={() => handleNavigation(item?.path)}
+                                >
+                                    {item?.name} {item?.icon}
+                                </button>
 
-                            {item?.subPathNames?.length > 0 && (
-                                <ul className="dropdown-menu absolute hidden min-w-min text-nowrap group-hover:flex flex-col bg-white text-black/70 font-medium p-2 shadow-lg z-10 rounded-md">
-                                    {item?.subPathNames?.map((subItem) => (
-                                        <li key={subItem?.sub_Path}>
-                                            <Link
-                                                href={subItem?.sub_Path}
-                                                className={`${subItem?.sub_Path === pathname ? "bg-gray-100" : "hover:bg-gray-100"} text-sm block px-4 py-2`}
-                                                target={subItem?.subName === "Careers" ? "_blank" : ""}
-                                            >
-                                                {subItem?.subName}
-                                            </Link>
-                                        </li>
-                                    ))}
-                                </ul>
-                            )}
-                        </li>
-                    ))}
-                </ul>
-            </div>
-            {isHome &&
-                <div className="w-full flex items-center flex-col justify-center gap-3 h-full">
-                    <p className="text-[45px] font-semibold text-white text-center">Leading Best Software Development Company</p>
-                    <span className="text-[45px] font-semibold text-white text-center">In Hyderabad</span>
+                                {item?.subPathNames?.length > 0 && (
+                                    <ul className="dropdown-menu absolute hidden min-w-min text-nowrap group-hover:flex flex-col bg-white text-black/70 font-medium p-2 shadow-lg z-10 rounded-md">
+                                        {item?.subPathNames?.map((subItem) => (
+                                            <li key={subItem?.sub_Path}>
+                                                <Link
+                                                    href={subItem?.sub_Path}
+                                                    className={`${subItem?.sub_Path === pathname ? "bg-gray-100" : "hover:bg-gray-100"} text-sm block px-4 py-2`}
+                                                    target={subItem?.subName === "Careers" ? "_blank" : ""}
+                                                >
+                                                    {subItem?.subName}
+                                                </Link>
+                                            </li>
+                                        ))}
+                                    </ul>
+                                )}
+                            </li>
+                        ))}
+                    </ul>
                 </div>
-            }
-        </div>
+                {isHome &&
+                    <div className="w-full flex items-center flex-col justify-center gap-3 h-full">
+                        <p className="text-[45px] font-semibold text-white text-center">Leading Best Software Development Company</p>
+                        <span className="text-[45px] font-semibold text-white text-center">In Hyderabad</span>
+                    </div>
+                }
+            </div>
+        </>
     )
 }

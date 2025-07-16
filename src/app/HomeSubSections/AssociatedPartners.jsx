@@ -50,7 +50,7 @@ export default function AssociatedPartners() {
     ]
 
     return (
-        <>
+        <div className='pt-10'>
             <h3 className='text-center text-[#00000099] text-[35px] font-semibold max-md:text-2xl'>Associated With</h3>
             <div className='py-[3rem]'>
                 <Marquee
@@ -70,6 +70,6 @@ export default function AssociatedPartners() {
                     ))}
                 </Marquee>
             </div>
-        </>
+        </div>
     )
 }

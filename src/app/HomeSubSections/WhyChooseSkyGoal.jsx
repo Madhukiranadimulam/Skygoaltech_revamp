@@ -76,7 +76,7 @@ export default function WhyChooseSkyGoal() {
     }, [])
 
     return (
-        <div ref={eleRef}>
+        <div ref={eleRef} className='pt-[3rem]'>
             <h3 className="mb-[1rem] text-center text-[#00000099] font-bold text-[35px] max-md:text-3xl">Why Choose Us</h3>
             <div className='pt-4 mx-[-2rem]'>
                 <Image

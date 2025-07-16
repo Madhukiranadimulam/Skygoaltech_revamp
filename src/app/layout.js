@@ -5,6 +5,7 @@ import JoinSkygoalToday from "./Components/JoinSkygoalToday";
 import MobileHeader from "./Components/MobileHeader";
 import { Manrope } from "next/font/google";
 import InstantCallBackWidget from '../shared/InstantCallBackWidget';
+import WhatsappWidget from "./Components/WhatsappWidget";
 
 const poppins = Manrope({
   subsets: ['latin'],
@@ -22,9 +23,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body
-        className={poppins.className}
-      >
+      <body className={poppins.className}>
         <div className="max-lg:hidden">
           <TopNavigationBar />
         </div>
@@ -32,7 +31,10 @@ export default function RootLayout({ children }) {
           <MobileHeader />
         </div>
         <main className="w-full min-h-screen overflow-y-auto overflow-x-hidden">{children}</main>
-        <InstantCallBackWidget />
+        <div className="w-full flex flex-col items-start">
+          <WhatsappWidget />
+          <InstantCallBackWidget />
+        </div>
         <JoinSkygoalToday />
         <Footer />
       </body>
