@@ -68,7 +68,7 @@ export default function Footer() {
                             alt='SkyGoal-logo'
                         />
                     </div>
-                    <p className='py-4 w-[300px] max-md:w-[270px]'>SkygoalTech is a solution provider for digital transformation. We help you to deliver next generation products, services and ideas. Our collaborative method of delivery with our extended team of partners enables us to ensure that we understand what is required by you.</p>
+                    <p className='py-4 w-[300px] max-md:w-[270px]'>SkygoalTech is a solution provider for digital transformation. We help you to deliver next generation products, services and ideas.</p>
                 </div>
                 <div>
                     <h3 className="font-extrabold text-2xl">Company</h3>

@@ -23,7 +23,7 @@ import nazmul_img from '../../assets/Nazmul-img.png';
 import billal_img from '../../assets/Billal-img.png';
 import lalith_img from '../../assets/Lalith-img.jpg';
 import naveen_img from '../../assets/Naveen-img.png';
-import suresh_img from '../../assets/Suresh-img.png';
+import suresh_img from '../../assets/Suresh-img.jpg';
 import tarun_img from '../../assets/tarun-img.png';
 import aditya_img from '../../assets/Aditya-img.webp';
 import luqman_img from '../../assets/Luqman-img.png';
