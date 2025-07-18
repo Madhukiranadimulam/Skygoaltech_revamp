@@ -1,7 +1,6 @@
 'use client';
 
 import React from 'react';
-import inspiringIndian from '../../assets/inspiring-Indians.png';
 import futureTech from '../../assets/futureTech-img.png';
 import pholexImg from '../../assets/pholexEnergy-img.png';
 import arrowMonk from '../../assets/arrowMonk-img.png';
