@@ -12,6 +12,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/autoplay";
+import skyGoalLogo from "../../assets/skygoal-logo.png";
 
 export default function Testimonials() {
 
@@ -20,7 +21,7 @@ export default function Testimonials() {
             clientFeedBack: "I am satisfied, and the manner in which this team carried out their duties increased my sales, and there is currently no difficulty. It was completed exactly according to my instructions, and I am grateful. I will undoubtedly collaborate with them in the future.",
             clientName: "Saran",
             companyName: "From inspiring indians",
-            companyLogo: inspiringIndian
+            companyLogo: skyGoalLogo
         },
         {
             clientFeedBack: "I was right to be sceptical about getting a logo and website designed for my startup. I choose Skygoal Tech because they were able to comprehend our needs. They were on schedule with the project delivery and had fantastic communication.",
@@ -44,7 +45,7 @@ export default function Testimonials() {
             clientFeedBack: "I have to say I'm impressed. I have a friend who is a Marketing Agency owner and he recommended you guys. I must say, this has been a great experience so far!",
             clientName: "NA",
             companyName: "From Arrow-monk",
-            companyLogo: inspiringIndian
+            companyLogo: skyGoalLogo
         },
         {
             clientFeedBack: "I had contacted a few web developers to make my website, they took my money and did nothing. I then came across this young team, they designed the site on time and within budget.I was happy with my service and i will suggest to take a service from this team.",
