@@ -11,7 +11,7 @@ export default function CompanyLocationMap() {
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
                 style={{ borderRadius: "10px" }}
-                className='w-full h-[300px] mx-[8rem] max-lg:mx-[4rem]'
+                className='w-full h-[300px] mx-[8rem] max-lg:ml-[2rem] max-lg:mr-[4rem]'
             ></iframe>
         </div>
     )

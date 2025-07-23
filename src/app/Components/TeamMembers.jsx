@@ -236,17 +236,17 @@ export default function TeamMembers() {
 
     const handleHover = (no) => {
         // console.log("Element Hovered", no);
-        setHoverElement((prev) => ({
+        setHoverElement({
             // ...prev,
             [no]: true
-        }));
+        });
     }
 
     const handleMouseLeave = (no) => {
-        setHoverElement((prev) => ({
+        setHoverElement({
             // ...prev,
             [no]: false
-        }));
+        });
     }
 
     return (

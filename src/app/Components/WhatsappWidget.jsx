@@ -19,9 +19,9 @@ export default function WhatsappWidget() {
     }
 
     return (
-        <div className='fixed bottom-35 right-8 z-100 max-md:bottom-28 max-md:right-4'>
+        <div className='fixed bottom-35 right-8 z-100 max-md:hidden'>
             <FaWhatsapp
-                className='text-white bg-green-400 rounded-full w-[70px] h-[70px] p-4 cursor-pointer'
+                className='text-white bg-green-400 rounded-full w-[55px] h-[55px] lg:w-[70px] lg:h-[70px] p-4 cursor-pointer'
                 onClick={handleNavigateToWhatsapp}
             />
         </div>

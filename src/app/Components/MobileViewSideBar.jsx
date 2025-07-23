@@ -67,7 +67,7 @@ export default function MobileViewSideBar({ setMobileNavOpen }) {
         // },
         {
             name: "About Us",
-            path: "/aboutUs"
+            path: "/aboutus"
         },
         {
             name: "Contact Us",

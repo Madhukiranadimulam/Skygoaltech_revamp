@@ -103,9 +103,9 @@ export default function page() {
     }
 
     return (
-        <div className='mt-[9rem] ml-[2rem]'>
+        <div className='mt-[9rem] ml-[2rem] max-md:mt-[7rem]'>
             <BreadCrumb />
-            <div className='px-[6rem] pt-[2rem] max-lg:px-[2rem]'>
+            <div className='px-[6rem] pt-[2rem] max-lg:pl-[0rem] max-lg:pr-[2rem]'>
                 <h3 className='text-[34px] font-semibold'>Business Enquiry</h3>
                 <div className='w-full pt-4 flex items-start justify-between gap-[3rem] mb-[3rem] max-lg:flex-col'>
                     <div className='w-4/5 bg-[#393559] text-white rounded-xl max-lg:w-full max-lg:mb-[4rem] max-lg:order-2'>
@@ -230,7 +230,7 @@ export default function page() {
                                                 <>
                                                     <select
                                                         {...field}
-                                                        className='w-full outline-none border border-gray-400 rounded-md px-3 py-2'
+                                                        className='w-full outline-none border border-gray-400 rounded-md px-3 h-11'
                                                     >
                                                         <option hidden>Select Service</option>
                                                         {servicesOptions?.map((item, index) => (

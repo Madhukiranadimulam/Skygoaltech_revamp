@@ -6,7 +6,7 @@ export default function page() {
 
     return (
         <>
-            <div className="w-full mt-[6rem] h-[70vh] xl:h-[80vh]">
+            <div className="w-full mt-[5.2rem] h-[70vh] xl:h-[80vh] ">
                 <img
                     src={serviceImg.src}
                     alt="Mobile App"

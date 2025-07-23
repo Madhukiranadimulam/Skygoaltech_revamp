@@ -14,13 +14,13 @@ export default function BreadCrumb() {
         switch (pathName) {
             case '/business-enquiry':
                 return "Business Enquiry";
-            case '/aboutUs':
+            case '/aboutus':
                 return 'About Us';
             case '/caseStudyAndBlogs':
                 return "Case-Study & Blogs"
             case '/termsAndConditions':
                 return 'Terms & Conditions'
-            case '/dataDeletionPolicy':
+            case '/data-deletion-policy':
                 return 'Data Deletion Policy'
             case '/privacyPolicy':
                 return 'Privacy Policy'

@@ -2,7 +2,7 @@
 
 import React, { useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
-import whyChooseUsImage from '../../assets/whyChooseUs-img.png';
+import whyChooseUsImage from '../../assets/whyChooseUs-img.svg';
 import './Home.css';
 
 export default function WhyChooseSkyGoal() {
@@ -76,6 +76,7 @@ export default function WhyChooseSkyGoal() {
     }, [])
 
     return (
+
         <div ref={eleRef} className='pt-[3rem]'>
             <h3 className="mb-[1rem] text-center text-[#00000099] font-bold text-[35px] max-md:text-3xl">Why Choose Us</h3>
             <div className='pt-4 mx-[-2rem]'>
@@ -83,6 +84,7 @@ export default function WhyChooseSkyGoal() {
                     className='w-full'
                     src={whyChooseUsImage}
                     alt='whyChooseImage'
+                    loading='eager'
                 />
             </div>
             <div className="w-full flex items-start justify-center gap-[6rem] flex-wrap py-10 max-md:gap-[4rem] max-sm:gap-[3rem]">

@@ -8,13 +8,13 @@ import TeamMembers from '../Components/TeamMembers';
 
 export default function page() {
     return (
-        <div className='mt-[9rem] ml-[2rem] mb-[4rem] max-lg:ml-[0rem]'>
+        <div className='mt-[9rem] ml-[2rem] mb-[4rem] max-md:mt-[7rem]'>
             <BreadCrumb />
-            <div>
+            <div className='max-lg:ml-[0rem]'>
                 <div className='flex flex-col gap-[5rem] pt-[3rem] px-[10rem] max-lg:px-[3rem]'>
                     <div className='flex items-center justify-between gap-[1rem] max-md:flex-wrap'>
                         <div className='flex flex-col gap-5 w-[1000px]'>
-                            <h3 className='text-2xl font-semibold'>Our Vision</h3>
+                            <h3 className='text-2xl font-semibold max-md:ml-[-2rem]'>Our Vision</h3>
                             <p className='leading-8'>
                                 Sky-GoalTech aims to empower businesses with innovative digital solutions. We deliver high-quality web, e-commerce, and branding services tailored to client goals. Our mission is to combine creativity and technology to drive results and build lasting partnerships.
                             </p>
@@ -38,7 +38,7 @@ export default function page() {
                             />
                         </div>
                         <div className='flex flex-col gap-5 w-[1000px] max-md:order-1 max-md:w-auto'>
-                            <h3 className='text-2xl font-semibold'>Our Strategy</h3>
+                            <h3 className='text-2xl font-semibold max-md:ml-[-2rem]'>Our Strategy</h3>
                             <p className='leading-8'>
                                 Sky-GoalTech focuses on understanding client needs and delivering tailored, tech-driven solutions. We use research, innovation, and an agile approach to ensure impactful and scalable results.
                             </p>

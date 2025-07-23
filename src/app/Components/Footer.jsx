@@ -10,6 +10,7 @@ import { FaSquareXTwitter } from "react-icons/fa6";
 import { FaLinkedin } from "react-icons/fa6";
 import skyLogo from '../../assets/skygoal-logo.png';
 import { usePathname, useRouter } from 'next/navigation';
+import { IoLogoWhatsapp } from "react-icons/io";
 
 export default function Footer() {
 
@@ -51,6 +52,20 @@ export default function Footer() {
         },
     ]
 
+    const handleNavigateToWhatsapp = () => {
+        const isMobile = /iphone|ipod|ipad|android/.test(navigator.userAgent.toLowerCase());
+
+        // Generate WhatsApp URL
+        const whatsappUrl = `https://wa.me/+918143965247`;
+
+        // Step 1: Share Referral Link on WhatsApp
+        if (isMobile) {
+            window.location.href = whatsappUrl;
+        } else {
+            window.open(whatsappUrl, "_blank");
+        }
+    }
+
     return (
         <footer className='mt-[50px] w-full bg-[#2A2742] text-white px-[8rem] max-lg:px-[3rem]'>
             <hr className='mt-[60px] mb-[40px] text-gray-300'>
@@ -73,7 +88,7 @@ export default function Footer() {
                 <div>
                     <h3 className="font-extrabold text-2xl">Company</h3>
                     <div className="flex flex-col gap-3 pt-2">
-                        <Link className="no-underline hoverColor" href="/aboutUs">About us</Link>
+                        <Link className="no-underline hoverColor" href="/aboutus">About us</Link>
                         <Link className="no-underline hoverColor" href="https://careers.skygoaltech.com/jobs/Careers" target='_blank'>Careers</Link>
                     </div>
                 </div>
@@ -81,7 +96,7 @@ export default function Footer() {
                     <h3 className="font-extrabold text-2xl">Policies</h3>
                     <div className="flex flex-col gap-3 pt-2">
                         <Link className="no-underline hoverColor" href="/termsAndConditions">Terms & Conditions</Link>
-                        <Link className="no-underline hoverColor" href="/dataDeletionPolicy">Data Deletion Policy</Link>
+                        <Link className="no-underline hoverColor" href="/data-deletion-policy">Data Deletion Policy</Link>
                         <Link className="no-underline hoverColor" href="/privacyPolicy">Privacy Policy</Link>
                         <Link className="no-underline hoverColor" href="/refundPolicy">Refund Policy</Link>
                         <Link className="no-underline hoverColor" href="/cancellationPolicy">Cancellation Policy</Link>
@@ -114,7 +129,7 @@ export default function Footer() {
                     </div>
                 </div>
             </div>
-            <div className='flex items-center gap-8 max-lg:pt-3'>
+            <div className='flex items-center gap-5 max-lg:pt-3'>
                 {socialMediaIcons?.map((item, index) => (
                     <Link
                         href={item?.path}
@@ -126,6 +141,13 @@ export default function Footer() {
                         {item?.icon}
                     </Link>
                 ))}
+                <button
+                    title='Whatsapp'
+                    className='text-[1.8rem] md:hidden'
+                    onClick={handleNavigateToWhatsapp}
+                >
+                    <IoLogoWhatsapp />
+                </button>
             </div>
             <div className='w-full py-5'>
                 <p className='text-center'>© 2025 Sky Goal INC. All rights reserved.</p>

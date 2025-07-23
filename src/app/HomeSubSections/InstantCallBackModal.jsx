@@ -9,7 +9,7 @@ import { RxCross1 } from "react-icons/rx";
 import { toast, ToastContainer } from 'react-toastify';
 import CustomThreeDotsLoader from '../../shared/CustomThreeDotsLoader.jsx';
 
-export default function InstantCallBackModal({ setWidgetOpen, widgetOpen }) {
+export default function InstantCallBackModal({ setWidgetOpen, widgetOpen, from }) {
 
     const [isLoading, setIsLoading] = useState(false);
 
@@ -82,9 +82,11 @@ export default function InstantCallBackModal({ setWidgetOpen, widgetOpen }) {
     }, [widgetOpen]);
 
     return (
-        <div className='fixed z-100 bottom-[120px] right-5 max-md:right-0 max-md:bottom-0 max-md:w-full'>
+        <div
+            className={`fixed z-100 ${from === "topNavigationBar" ? "w-full flex items-center justify-center inset-0 bg-black/50" : "bottom-[120px] right-5 max-md:right-0 max-md:bottom-0"}`}
+        >
             <div className='bg-white w-[450px] shadow-md max-md:w-full rounded-lg px-[2rem] py-[3rem] max-lg:py-[1.5rem] outsideClick'>
-                <div className='w-full flex items-end justify-end md:hidden'>
+                <div className={`w-full flex items-end justify-end`}>
                     <RxCross1 className='text-[1.5rem] cursor-pointer' onClick={handleCancelModal} />
                 </div>
                 <div>
