@@ -56,7 +56,7 @@ export default function TopNavigationBar() {
                 },
                 {
                     subName: "Corporate-Services",
-                    sub_Path: "/corporate-services"
+                    sub_Path: "/corporate-services",
                 },
                 {
                     subName: "Cloud Solutions",
