@@ -49,6 +49,17 @@ export default function RootLayout({ children }) {
             `,
           }}
         />
+
+        {/* <!-- Event snippet for Submit lead form conversion page --> */}
+        <Script
+          id="gtag-conversion"
+          strategy="afterInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `
+      gtag('event', 'conversion', {'send_to': 'AW-17213283517/9uCdCOSIvvcaEL25949A'});`,
+          }}
+        />
+
       </head>
       <body className={poppins.className}>
         <div className="max-lg:hidden">
