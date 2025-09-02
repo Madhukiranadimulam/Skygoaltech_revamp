@@ -12,7 +12,7 @@ import kishore_img from '../../assets/kishore-img.png';
 import sai_img from '../../assets/sai-img.jpg';
 import nagesh_img from '../../assets/nagesh-img.webp';
 import madhu_img from '../../assets/madhu-img.webp';
-import usha_img from '../../assets/usha-img.png';
+import usha_img from '../../assets/usha-img.jpg';
 import bhargavi_img from '../../assets/bhargavi-img.jpg';
 import prathap_img from '../../assets/prathap-img.png';
 import manikanta_img from '../../assets/manikanta-img.jpg';
