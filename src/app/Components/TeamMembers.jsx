@@ -73,7 +73,7 @@ export default function TeamMembers() {
         {
             no: 6,
             name: "Usha",
-            designation: "Project Co-Ordinator",
+            designation: "Project Manager",
             image: usha_img
         },
         {
