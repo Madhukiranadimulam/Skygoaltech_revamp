@@ -29,7 +29,6 @@ export default function JoinSkygoalToday() {
                     throw new Error(errorResult?.message);
                 }
                 const result = await response.json();
-                console.log("Email sent", result);
                 toast.success(result?.message);
             } catch (error) {
                 console.error("Error while sending data", error);
