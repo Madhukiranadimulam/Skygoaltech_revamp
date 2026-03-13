@@ -16,9 +16,9 @@ const poppins = Manrope({
 export const metadata = {
   title: "Best Tech and IT service provider",
   description: "Best Tech and IT service provider",
-  icons: {
-    icon: '/favicon.png',
-  },
+  // icons: {
+  //   icon: '/favicon.png',
+  // },
   openGraph: {
     title: "Best Tech and IT service provider",
     description: "Get top-notch technology and IT services tailored for your business.",
