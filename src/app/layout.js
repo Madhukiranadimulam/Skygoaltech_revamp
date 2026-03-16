@@ -16,9 +16,6 @@ const poppins = Manrope({
 export const metadata = {
   title: "Best Tech and IT service provider",
   description: "Best Tech and IT service provider",
-  // icons: {
-  //   icon: '/favicon.png',
-  // },
   openGraph: {
     title: "Best Tech and IT service provider",
     description: "Get top-notch technology and IT services tailored for your business.",
@@ -42,10 +39,10 @@ export default function RootLayout({ children }) {
           strategy="afterInteractive"
           dangerouslySetInnerHTML={{
             __html: `
-              window.dataLayer = window.dataLayer || [];
-              function gtag(){dataLayer.push(arguments);}
-              gtag('js', new Date());
-              gtag('config', 'AW-17213283517');
+                   window.dataLayer = window.dataLayer || [];
+                    function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-DQHLEKFX0W');
             `,
           }}
         />
