@@ -27,60 +27,50 @@ export default function InstantCallBackModal({ setWidgetOpen, widgetOpen, from }
         }
     });
 
-    const stateOwnerMap = [
-        {
-            value: "1230680000000444001", // Chandu
-            name: "Delhi",
-        },
-        {
-            value: "1230680000000445406", // Murthy
-            name: "Andhra Pradesh",
-        },
-        {
-            value: "1230680000000600001", // Janaki Ram
-            name: "Telangana"
-        },
-    ];
+    const USERS = {
+        RITIKA: "330982000001583002",
+        JANAKI: "330982000001583031",
+    };
 
     const usersMap = [
-        { state: "Andhra Pradesh", value: "" },  // Janaki Ram
-        { state: "Arunachal Pradesh", value: "" }, // Ritika
-        { state: "Assam", value: "" }, // Ritika
-        { state: "Bihar", value: "" }, // Ritika
-        { state: "Chhattisgarh", value: "" }, // Ritika
-        { state: "Goa", value: "" }, // Ritika
-        { state: "Gujarat", value: "" }, // Ritika
-        { state: "Haryana", value: "" }, // Ritika
-        { state: "Himachal Pradesh", value: "" }, // Ritika
-        { state: "Jharkhand", value: "" }, // Ritika
-        { state: "Karnataka", value: "" }, // Janaki Ram
-        { state: "Kerala", value: "" }, // Janaki Ram
-        { state: "Madhya Pradesh", value: "" }, // Ritika
-        { state: "Maharashtra", value: "" }, // Ritika
-        { state: "Manipur", value: "" }, // Ritika
-        { state: "Meghalaya", value: "" }, // Ritika
-        { state: "Mizoram", value: "" }, // Ritika
-        { state: "Nagaland", value: "" }, // Ritika
-        { state: "Odisha", value: "" }, // Ritika
-        { state: "Punjab", value: "" }, // Ritika
-        { state: "Rajasthan", value: "" }, // Ritika
-        { state: "Sikkim", value: "" }, // Ritika
-        { state: "Tamil Nadu", value: "" }, // Janaki Ram
-        { state: "Telangana", value: "" }, // Janaki Ram
-        { state: "Tripura", value: "" }, // Ritika
-        { state: "Uttar Pradesh", value: "" }, // Ritika
-        { state: "Uttarakhand", value: "" }, // Ritika
-        { state: "West Bengal", value: "" }, // Ritika
+        { state: "Andhra Pradesh", value: USERS.JANAKI },
+        { state: "Arunachal Pradesh", value: USERS.RITIKA },
+        { state: "Assam", value: USERS.RITIKA },
+        { state: "Bihar", value: USERS.RITIKA },
+        { state: "Chhattisgarh", value: USERS.RITIKA },
+        { state: "Goa", value: USERS.RITIKA },
+        { state: "Gujarat", value: USERS.RITIKA },
+        { state: "Haryana", value: USERS.RITIKA },
+        { state: "Himachal Pradesh", value: USERS.RITIKA },
+        { state: "Jharkhand", value: USERS.RITIKA },
+        { state: "Karnataka", value: USERS.JANAKI },
+        { state: "Kerala", value: USERS.JANAKI },
+        { state: "Madhya Pradesh", value: USERS.RITIKA },
+        { state: "Maharashtra", value: USERS.RITIKA },
+        { state: "Manipur", value: USERS.RITIKA },
+        { state: "Meghalaya", value: USERS.RITIKA },
+        { state: "Mizoram", value: USERS.RITIKA },
+        { state: "Nagaland", value: USERS.RITIKA },
+        { state: "Odisha", value: USERS.RITIKA },
+        { state: "Punjab", value: USERS.RITIKA },
+        { state: "Rajasthan", value: USERS.RITIKA },
+        { state: "Sikkim", value: USERS.RITIKA },
+        { state: "Tamil Nadu", value: USERS.JANAKI },
+        { state: "Telangana", value: USERS.JANAKI },
+        { state: "Tripura", value: USERS.RITIKA },
+        { state: "Uttar Pradesh", value: USERS.RITIKA },
+        { state: "Uttarakhand", value: USERS.RITIKA },
+        { state: "West Bengal", value: USERS.RITIKA },
 
         // Union Territories
-        { state: "Andaman and Nicobar Islands", value: "" }, // Ritika
-        { state: "Chandigarh", value: "" }, // Ritika
-        { state: "Dadra and Nagar Haveli and Daman and Diu", value: "" }, // Ritika
-        { state: "Delhi", value: "" }, // Ritika
-        { state: "Jammu and Kashmir", value: "" }, // Ritika
-        { state: "Ladakh", value: "" }, // Ritika
-        { state: "Lakshadweep", value: "" }, // Ritika
-        { state: "Puducherry", value: "" }, // Ritika
+        { state: "Andaman and Nicobar Islands", value: USERS.RITIKA },
+        { state: "Chandigarh", value: USERS.RITIKA },
+        { state: "Dadra and Nagar Haveli and Daman and Diu", value: USERS.RITIKA },
+        { state: "Delhi", value: USERS.RITIKA },
+        { state: "Jammu and Kashmir", value: USERS.RITIKA },
+        { state: "Ladakh", value: USERS.RITIKA },
+        { state: "Lakshadweep", value: USERS.RITIKA },
+        { state: "Puducherry", value: USERS.RITIKA },
     ];
 
     const fetchCRMUsers = async () => {
@@ -95,11 +85,11 @@ export default function InstantCallBackModal({ setWidgetOpen, widgetOpen, from }
             const result = await response.json();
             console.log("CRM Users", result);
             const formattedUsers = result?.data?.map((item) => {
-                const matched = stateOwnerMap?.find((m) => m?.value === item?.id);
+                const matched = usersMap?.find((m) => m?.value === item?.id);
                 // console.log("Matched", matched);
                 return {
                     value: matched?.value,
-                    label: matched?.name,
+                    label: matched?.state,
                 };
             });
             // console.log("Formatted Users", formattedUsers);
