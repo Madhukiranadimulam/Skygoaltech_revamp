@@ -16,6 +16,9 @@ const poppins = Manrope({
 export const metadata = {
   title: "Best Tech and IT service provider",
   description: "Best Tech and IT service provider",
+  icons: {
+    icon: '/favicon.png',
+  },
   openGraph: {
     title: "Best Tech and IT service provider",
     description: "Get top-notch technology and IT services tailored for your business.",
@@ -68,7 +71,7 @@ gtag('config', 'G-DQHLEKFX0W');
         <main className="w-full min-h-screen overflow-y-auto overflow-x-hidden">{children}</main>
         <div className="">
           <WhatsappWidget />
-          <InstantCallBackWidget />
+          {/* <InstantCallBackWidget /> */}
         </div>
         <JoinSkygoalToday />
         <Footer />

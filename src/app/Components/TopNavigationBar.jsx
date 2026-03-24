@@ -138,7 +138,7 @@ export default function TopNavigationBar() {
     const handleCallBackModal = () => {
         // console.log("Clicked")
         setWidgetOpen(true);
-    }
+    };
 
     return (
         <>
@@ -147,14 +147,14 @@ export default function TopNavigationBar() {
             >
                 <div
                     className={`fixed flex items-center gap-8 py-2
-                        ${(showNavbar && pathname === '/') ? 'w-[1000px] mt-[3rem] left-1/2 transform -translate-x-1/2 transition-all duration-700 ease-in-out justify-between px-[3rem] rounded-[70px] bg-white z-[100] custom-shadow'
-                            : (bgImgComplete || !isHome) ? "w-full justify-between rounded-none px-[4rem] border-b border-b-gray-300 z-50 bg-white" : 'w-[900px] mt-[3rem] left-1/2 transform -translate-x-1/2 transition-all duration-700 ease-in-out px-[2rem] justify-between rounded-full bg-[#0000000D] text-[#404040] z-[50]'
+                        ${(showNavbar && pathname === '/') ? 'w-[1000px] mt-12 left-1/2 transform -translate-x-1/2 transition-all duration-700 ease-in-out justify-between px-12 rounded-[70px] bg-white z-100 custom-shadow'
+                            : (bgImgComplete || !isHome) ? "w-full justify-between rounded-none px-16 border-b border-b-gray-300 z-50 bg-white" : 'w-[900px] mt-12 left-1/2 transform -translate-x-1/2 transition-all duration-700 ease-in-out px-8 justify-between rounded-full bg-[#0000000D] text-[#404040] z-50'
                         }`}
                 >
                     <div onClick={() => handleNavigation('/')} className='cursor-pointer'>
                         <Image src={sky_logo} alt="Sky-Goal Logo" className='w-24' />
                     </div>
-                    <ul className="flex items-center gap-[2rem]">
+                    <ul className="flex items-center gap-8">
                         {topNavPaths?.map((item, index) => (
                             <li key={index} className="relative group">
                                 <button
@@ -183,10 +183,10 @@ export default function TopNavigationBar() {
                         ))}
                     </ul>
                     <div
-                        className="p-[3px] bg-gradient-to-t from-[#2A2742] to-[#9A9A9A] rounded-full cursor-pointer animate-bounce"
+                        className={`${!widgetOpen && " animate-bounce"} p-[3px] bg-linear-to-t from-[#2A2742] to-[#9A9A9A] rounded-full cursor-pointer`}
                         onClick={handleCallBackModal}
                     >
-                        <button className="text-base font-semibold bg-white text-[#2A2742] rounded-full px-4 py-[6px] w-full h-full shadow-[inset_0_0_10px_rgba(217,75,98,0.15)] cursor-pointer">
+                        <button className="text-base font-semibold bg-white text-[#2A2742] rounded-full px-4 py-1.5 w-full h-full shadow-[inset_0_0_10px_rgba(217,75,98,0.15)] cursor-pointer">
                             Get Instant Call Back
                         </button>
                     </div>

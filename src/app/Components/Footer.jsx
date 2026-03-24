@@ -23,7 +23,7 @@ export default function Footer() {
             return;
         }
         navigate.push("/");
-    }
+    };
 
     const socialMediaIcons = [
         {
@@ -50,7 +50,7 @@ export default function Footer() {
             title: "LinkedIn",
             size: "27.2"
         },
-    ]
+    ];
 
     const handleNavigateToWhatsapp = () => {
         const isMobile = /iphone|ipod|ipad|android/.test(navigator.userAgent.toLowerCase());
@@ -64,11 +64,11 @@ export default function Footer() {
         } else {
             window.open(whatsappUrl, "_blank");
         }
-    }
+    };
 
     return (
-        <footer className='mt-[50px] w-full bg-[#2A2742] text-white px-[8rem] max-lg:px-[3rem]'>
-            <hr className='mt-[60px] mb-[40px] text-gray-300'>
+        <footer className='mt-[50px] w-full bg-[#2A2742] text-white px-32 max-lg:px-12'>
+            <hr className='mt-[60px] mb-10 text-gray-300'>
             </hr>
             <div className='w-full flex items-start justify-between gap-10 flex-wrap'>
                 <div>
@@ -150,7 +150,7 @@ export default function Footer() {
                 </button>
             </div>
             <div className='w-full py-5'>
-                <p className='text-center'>© 2025 Sky Goal INC. All rights reserved.</p>
+                <p className='text-center'>© 2026 Sky Goal INC. All rights reserved.</p>
             </div>
         </footer>
     )

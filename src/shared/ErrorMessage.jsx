@@ -1,9 +1,7 @@
 import React from 'react'
 
-export default function ErrorMessage() {
+export default function ErrorMessage({ message = "*This field is required." }) {
     return (
-        <div>
-            <p className='text-red-400 font-medium text-[13px]'>*This field is required.</p>
-        </div>
-    )
-}
+        <p className='text-red-600 font-semibold text-[13px]'>{message}</p>
+    );
+};

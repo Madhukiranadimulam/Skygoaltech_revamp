@@ -39,7 +39,7 @@ export default function MobileHeader() {
                         className='cursor-pointer'
                         onClick={handleMobileViewSideBar}
                     >
-                        <RxHamburgerMenu className='text-[2.5rem]' />
+                        <RxHamburgerMenu className='text-[2.2rem]' />
                     </button>
                 </div>
             </div>

@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React from 'react';
 import BreadCrumb from '../Components/BreadCrumb';
 import { useForm, Controller } from 'react-hook-form';
 import ErrorMessage from '../../shared/ErrorMessage.jsx';
@@ -9,12 +9,10 @@ import CustomThreeDotsLoader from '@/shared/CustomThreeDotsLoader';
 
 export default function page() {
 
-    const [isLoading, setIsLoading] = useState(false);
-
     const {
         register,
         handleSubmit,
-        formState: { errors },
+        formState: { errors, isSubmitting },
         control,
         watch,
         reset
@@ -67,7 +65,7 @@ export default function page() {
     // console.log("Selected Service", selectedService)
 
     const onSubmit = async (data) => {
-        console.log("Data from form", data);
+        // console.log("Data from form", data);
         const formData = {
             name: data?.name,
             email: data?.email,
@@ -79,7 +77,6 @@ export default function page() {
             message: data?.message
         };
         try {
-            setIsLoading(true);
             const response = await fetch('/api/sendBusinessFormToCliq', {
                 method: 'POST',
                 headers: {
@@ -98,7 +95,6 @@ export default function page() {
         } catch (error) {
             console.error("Error while sending data", error);
         }
-        setIsLoading(false);
         reset();
     }
 
@@ -279,12 +275,13 @@ export default function page() {
                                 </div>
                             </div>
                             <div className='flex justify-end pt-[5rem] max-lg:pt-[2rem]'>
-                                {isLoading ?
+                                {isSubmitting ?
                                     <CustomThreeDotsLoader />
                                     :
                                     <button
-                                        className='text-black hover:text-white border border-gray-400 rounded-lg text-base text-center px-12 py-3 hover:bg-[#4F4B6A] cursor-pointer'
+                                        className='text-black hover:text-white border border-gray-400 rounded-lg text-base text-center px-12 py-2 hover:bg-[#4F4B6A] cursor-pointer'
                                         type='submit'
+                                        disabled={isSubmitting}
                                     >
                                         Submit
                                     </button>

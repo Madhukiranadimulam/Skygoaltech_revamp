@@ -50,7 +50,7 @@ export default function MobileViewHomePage() {
             link: "/cloud-solutions",
             name: "Cloud Solutions"
         }
-    ]
+    ];
 
     useEffect(() => {
         const handleResize = () => {
@@ -74,16 +74,16 @@ export default function MobileViewHomePage() {
 
     const handleCallBackModal = () => {
         setWidgetOpen(true);
-    }
+    };
 
     return (
         <div className='bgHomePage'>
             <div className="w-full flex items-center flex-col justify-center gap-8 h-full max-md:gap-5">
                 <div className='text-center'>
-                    <p className="text-2xl md:text-[45px] font-black px-[2rem]">Leading Best Software Development</p>
+                    <p className="text-2xl md:text-[45px] font-black px-8">Leading Best Software Development</p>
                     <span className="text-2xl md:text-[45px] font-black">Company In Hyderabad</span>
                 </div>
-                <p className='text-sm md:text-lg font-semibold text-[#3F3F3F] text-wrap px-[2rem] text-center'>Empowering digital transformation through next-gen products, services, and collaborative delivery with trusted partners.</p>
+                <p className='text-sm md:text-lg font-semibold text-[#3F3F3F] text-wrap px-8 text-center'>Empowering digital transformation through next-gen products, services, and collaborative delivery with trusted partners.</p>
 
                 <div className='w-[632px] bg-[#E4E4E4] rounded-full p-2 overflow-auto'>
                     <div className='flex items-center gap-10 bg-white p-2 rounded-full'>
@@ -130,7 +130,7 @@ export default function MobileViewHomePage() {
                                             </Link>
                                             <Tooltip
                                                 // Don't forget to add this
-                                                className="!bg-white !text-black shadow-sm !px-3 !py-1 !rounded"
+                                                className="bg-white! text-black! shadow-sm px-3! py-1! rounded!"
                                                 delayShow={300}
                                                 id="shared-tooltip"
                                             />
@@ -142,10 +142,10 @@ export default function MobileViewHomePage() {
                     </div>
                 </div>
                 <div
-                    className="p-[3px] bg-gradient-to-t from-[#2A2742] to-[#9A9A9A] rounded-full cursor-pointer md:hidden"
+                    className="p-[3px] bg-linear-to-t from-[#2A2742] to-[#9A9A9A] rounded-full cursor-pointer lg:hidden animate-bounce mt-4"
                     onClick={handleCallBackModal}
                 >
-                    <button className="text-base font-semibold bg-white text-[#2A2742] rounded-full px-4 py-[6px] w-full h-full shadow-[inset_0_0_10px_rgba(217,75,98,0.15)] cursor-pointer">
+                    <button className="md:text-base font-semibold bg-white text-[#2A2742] rounded-full px-4 py-1.5 w-full h-full shadow-[inset_0_0_10px_rgba(217,75,98,0.15)] cursor-pointer text-sm">
                         Get Instant Call Back
                     </button>
                 </div>
@@ -158,5 +158,5 @@ export default function MobileViewHomePage() {
                 />
             )}
         </div >
-    )
-}
+    );
+};
