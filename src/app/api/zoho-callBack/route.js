@@ -109,6 +109,7 @@ Phone: ${validMobileNumber}`,
                         Owner: {
                             id: id,
                         },
+                        Lead_Source: "Skygoal Website"
                     },
                 ],
             }),
@@ -119,29 +120,31 @@ Phone: ${validMobileNumber}`,
             crmPromise,
         ]);
 
+        // console.log("CRM Promise", crmRes);
+
         // Check promise-level failure
-        if (cliqRes.status === "rejected") {
-            console.error("Cliq network error:", cliqRes.reason);
+        if (cliqRes?.status === "rejected") {
+            console.error("Cliq network error:", cliqRes?.reason);
         };
 
         // Check API-level failure
-        if (cliqRes.status === "fulfilled" && !cliqRes.value.ok) {
+        if (cliqRes?.status === "fulfilled" && !cliqRes?.value.ok) {
             const errorText = await cliqRes.value.text();
             console.error("Cliq API error:", errorText);
         };
 
-        if (crmRes.status === "rejected") {
+        if (crmRes?.status === "rejected") {
             console.error("CRM network error:", crmRes.reason);
         };
 
-        if (crmRes.status === "fulfilled" && !crmRes.value.ok) {
+        if (crmRes?.status === "fulfilled" && !crmRes?.value?.ok) {
             const errorText = await crmRes.value.text();
             console.error("CRM API error:", errorText);
         };
 
-        const isCliqSuccess = cliqRes.status === "fulfilled" && cliqRes.value.ok;
+        const isCliqSuccess = cliqRes?.status === "fulfilled" && cliqRes?.value.ok;
 
-        const isCrmSuccess = crmRes.status === "fulfilled" && crmRes.value.ok;
+        const isCrmSuccess = crmRes?.status === "fulfilled" && crmRes?.value?.ok;
 
         if (isCliqSuccess || isCrmSuccess) {
             return Response.json({
