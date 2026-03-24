@@ -1,5 +1,13 @@
+let cachedToken = null;
+let tokenExpiry = null;
+
 export const getAccessToken = async () => {
     try {
+
+        if (cachedToken && tokenExpiry && Date.now() < tokenExpiry) {
+            return cachedToken;
+        };
+
         const res = await fetch("https://accounts.zoho.in/oauth/v2/token", {
             method: "POST",
             headers: {
@@ -14,13 +22,18 @@ export const getAccessToken = async () => {
         });
 
         const data = await res.json();
-        // console.log("Access Token Response", data);
+
         if (!res.ok || data?.error) {
             console.error("Zoho Token Error:", data);
             throw new Error(data?.error || "Failed to fetch access token");
         };
 
-        return data?.access_token;
+        cachedToken = data.access_token;
+
+        // expires_in is in seconds
+        tokenExpiry = Date.now() + (data.expires_in - 60) * 1000;
+
+        return cachedToken;
     } catch (error) {
         console.error("getAccessToken Error:", error);
         return null;
