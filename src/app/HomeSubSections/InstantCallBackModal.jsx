@@ -75,27 +75,30 @@ export default function InstantCallBackModal({ setWidgetOpen, widgetOpen, from }
 
     const fetchCRMUsers = async () => {
         try {
-            const response = await fetch("/api/crm-users", {
-                method: "GET",
-            });
+            const response = await fetch("/api/crm-users");
+
             if (!response.ok) {
                 const errorResult = await response.json();
                 throw new Error(errorResult?.message);
-            };
+            }
+
             const result = await response.json();
-            console.log("CRM Users", result);
-            const formattedUsers = result?.data?.map((item) => {
-                const matched = usersMap?.find((m) => m?.value === item?.id);
-                // console.log("Matched", matched);
-                return {
-                    value: matched?.value,
-                    label: matched?.state,
-                };
-            });
-            // console.log("Formatted Users", formattedUsers);
+            // console.log("CRM Users:", result?.data);
+
+            const crmUserIds = result?.data?.map((u) => u?.id);
+
+            const formattedUsers = usersMap
+                ?.filter((u) => crmUserIds?.includes(u?.value))
+                ?.map((u) => ({
+                    value: u?.value,
+                    label: u?.state,
+                }));
+
+            // console.log("Formatted Users:", formattedUsers);
+
             setUsersList(formattedUsers);
         } catch (err) {
-            console.log("Error while fetching crm users", err);
+            console.error("Error while fetching crm users", err);
         }
     };
 
