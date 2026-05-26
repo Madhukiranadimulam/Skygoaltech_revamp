@@ -25,7 +25,7 @@ export const metadata = {
     siteName: "SGIT",
   },
   other:{
-    "facebook-domain-verification": 
+    "facebook-domain-verification": "xuvxasuk28c12bkfamz6z1uo1tpo2k"
   }
 };
 
