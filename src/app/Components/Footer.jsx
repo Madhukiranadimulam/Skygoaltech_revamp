@@ -73,12 +73,13 @@ export default function Footer() {
             <div className='w-full flex items-start justify-between gap-10 flex-wrap'>
                 <div>
                     <div
-                        className='w-[140px] bg-white rounded-lg px-2 py-1 cursor-pointer'
+                        className='w-[140px] bg-white rounded-lg px-2 py-4 cursor-pointer'
                         onClick={handleLogoClick}
                     >
                         <Image
                             src={skyLogo}
-                            width={120}
+                            width={300}
+                            // height={100}
                             loading='lazy'
                             alt='SkyGoal-logo'
                         />

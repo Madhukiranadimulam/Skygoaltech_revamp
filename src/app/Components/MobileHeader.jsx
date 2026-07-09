@@ -30,10 +30,10 @@ export default function MobileHeader() {
 
     return (
         <>
-            <div className='fixed z-100 w-full bg-white border-b border-b-gray-300 px-[3rem] py-2 max-sm:px-[1.5rem]'>
+            <div className='fixed z-100 w-full bg-white border-b border-b-gray-300 px-12 py-2 max-sm:px-6'>
                 <div className='flex items-center justify-between'>
                     <div onClick={handleLogoNavigation}>
-                        <Image src={sky_logo} alt="Sky-Goal Logo" className='w-28 max-sm:w-24' />
+                        <Image src={sky_logo} alt="Sky-Goal Logo" className='w-28' />
                     </div>
                     <button
                         className='cursor-pointer'

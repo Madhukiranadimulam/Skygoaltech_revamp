@@ -1,12 +1,57 @@
 import { getAccessToken } from "@/app/helper/getAccessToken";
 
+const corsHeaders = {
+    "Access-Control-Allow-Origin": "*", // change later to your WP domain
+    "Access-Control-Allow-Methods": "POST, OPTIONS",
+    "Access-Control-Allow-Headers": "Content-Type",
+};
+
+export async function OPTIONS() {
+    return new Response(null, {
+        status: 200,
+        headers: corsHeaders,
+    });
+};
+
+const verifyCaptcha = async (token) => {
+
+    const secret = process.env.GOOGLE_RECAPTCHA_SECRET_KEY;
+
+    const response = await fetch("https://www.google.com/recaptcha/api/siteverify", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/x-www-form-urlencoded",
+        },
+        body: `secret=${secret}&response=${token}`,
+    });
+
+    const result = await response.json();
+    // console.log("Captcha Result", result);
+    return result;
+
+};
+
 export async function POST(req) {
 
     const body = await req.json();
 
-    const { name, email, phone, id } = body || {};
+    const { name, email, phone, state, source, googleCaptchaToken } = body || {};
 
     const webhookURL = process.env.ZOHO_CLIQ_WEBHOOK_URL_FOR_CALLBACK;
+
+    if (!googleCaptchaToken) {
+        return Response.json(
+            {
+                success: false,
+                message: "Captcha is required.",
+                data: null,
+            },
+            {
+                status: 400,
+                headers: corsHeaders,
+            },
+        );
+    };
 
     if (!name) {
         return Response.json(
@@ -17,6 +62,7 @@ export async function POST(req) {
             },
             {
                 status: 400,
+                headers: corsHeaders
             },
         );
     };
@@ -30,6 +76,7 @@ export async function POST(req) {
             },
             {
                 status: 400,
+                headers: corsHeaders
             },
         );
     };
@@ -43,11 +90,12 @@ export async function POST(req) {
             },
             {
                 status: 400,
+                headers: corsHeaders
             },
         );
     };
 
-    if (!id) {
+    if (!state) {
         return Response.json(
             {
                 success: false,
@@ -56,6 +104,21 @@ export async function POST(req) {
             },
             {
                 status: 400,
+                headers: corsHeaders
+            },
+        );
+    };
+
+    if (!source) {
+        return Response.json(
+            {
+                success: false,
+                message: "Lead Source is required.",
+                data: null,
+            },
+            {
+                status: 400,
+                headers: corsHeaders
             },
         );
     };
@@ -79,7 +142,45 @@ export async function POST(req) {
 
     const validMobileNumber = phone?.replace(/\s+/g, ""); // remove spaces
 
+    // const USERS = {
+    //     RITIKA: "330982000001583002",
+    //     JANAKI: "330982000001583031",
+    // };
+
+    const USERS = {
+        Venu: "1230680000000444001",
+        Murthy: "1230680000000445406"
+    };
+
+    const getOwnerByState = (s) => {
+        const venuStates = ["Andhra Pradesh", "Karnataka", "Kerala", "Tamil Nadu", "Telangana"];
+
+        if (venuStates?.includes(s)) {
+            return USERS.Venu;
+        };
+
+        return USERS.Murthy;
+    };
+
+    const ownerId = getOwnerByState(state);
+
     try {
+
+        const captchaRes = await verifyCaptcha(googleCaptchaToken);
+
+        if (!captchaRes.success) {
+            return Response.json(
+                {
+                    success: false,
+                    message: "Captcha Verification failed.",
+                    data: null,
+                },
+                {
+                    status: 400,
+                    headers: corsHeaders
+                },
+            );
+        };
 
         const cliqPromise = fetch(webhookURL, {
             method: "POST",
@@ -107,9 +208,9 @@ Phone: ${validMobileNumber}`,
                         Email: email,
                         Phone: validMobileNumber,
                         Owner: {
-                            id: id,
+                            id: ownerId,
                         },
-                        Lead_Source: "Skygoal Website"
+                        Lead_Source: source,
                     },
                 ],
             }),
@@ -119,8 +220,6 @@ Phone: ${validMobileNumber}`,
             cliqPromise,
             crmPromise,
         ]);
-
-        // console.log("CRM Promise", crmRes);
 
         // Check promise-level failure
         if (cliqRes?.status === "rejected") {
@@ -147,10 +246,16 @@ Phone: ${validMobileNumber}`,
         const isCrmSuccess = crmRes?.status === "fulfilled" && crmRes?.value?.ok;
 
         if (isCliqSuccess || isCrmSuccess) {
-            return Response.json({
-                success: true,
-                message: "Form submitted successfully",
-            });
+            return Response.json(
+                {
+                    success: true,
+                    message: "Form submitted successfully",
+                },
+                {
+                    status: 201,
+                    headers: corsHeaders
+                }
+            );
         };
 
         return Response.json(
@@ -158,7 +263,10 @@ Phone: ${validMobileNumber}`,
                 success: false,
                 message: "Submission failed. Please try again.",
             },
-            { status: 500 }
+            {
+                status: 500,
+                headers: corsHeaders
+            }
         );
 
     } catch (error) {
@@ -169,7 +277,10 @@ Phone: ${validMobileNumber}`,
                 success: false,
                 message: "Internal Server Error",
             },
-            { status: 500 }
+            {
+                status: 500,
+                headers: corsHeaders
+            }
         );
     }
 };

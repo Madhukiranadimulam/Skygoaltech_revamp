@@ -1,113 +1,76 @@
 'use client';
 
 import ErrorMessage from '../../shared/ErrorMessage.jsx';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { useForm, Controller } from 'react-hook-form';
-// import callBackFormImg from '../../assets/callBackForm-img.png';
-// import Image from 'next/image.js';
 import { RxCross1 } from "react-icons/rx";
 import { toast, ToastContainer } from 'react-toastify';
 import CustomThreeDotsLoader from '../../shared/CustomThreeDotsLoader.jsx';
 import Select from "react-select";
 import { reactSelectCustomStyles } from '@/shared/customStyles.js';
+import ReCAPTCHA from 'react-google-recaptcha';
 
 export default function InstantCallBackModal({ setWidgetOpen, widgetOpen, from }) {
 
-    const [usersList, setUsersList] = useState()
+    const recaptchaRef = useRef(null);
 
     const {
         register,
         handleSubmit,
         formState: { errors, isSubmitting },
         reset,
-        control
+        control,
+        setValue
     } = useForm({
         defaultValues: {
             selectedState: null,
         }
     });
 
-    const USERS = {
-        RITIKA: "330982000001583002",
-        JANAKI: "330982000001583031",
-    };
-
-    const usersMap = [
-        { state: "Andhra Pradesh", value: USERS.JANAKI },
-        { state: "Arunachal Pradesh", value: USERS.RITIKA },
-        { state: "Assam", value: USERS.RITIKA },
-        { state: "Bihar", value: USERS.RITIKA },
-        { state: "Chhattisgarh", value: USERS.RITIKA },
-        { state: "Goa", value: USERS.RITIKA },
-        { state: "Gujarat", value: USERS.RITIKA },
-        { state: "Haryana", value: USERS.RITIKA },
-        { state: "Himachal Pradesh", value: USERS.RITIKA },
-        { state: "Jharkhand", value: USERS.RITIKA },
-        { state: "Karnataka", value: USERS.JANAKI },
-        { state: "Kerala", value: USERS.JANAKI },
-        { state: "Madhya Pradesh", value: USERS.RITIKA },
-        { state: "Maharashtra", value: USERS.RITIKA },
-        { state: "Manipur", value: USERS.RITIKA },
-        { state: "Meghalaya", value: USERS.RITIKA },
-        { state: "Mizoram", value: USERS.RITIKA },
-        { state: "Nagaland", value: USERS.RITIKA },
-        { state: "Odisha", value: USERS.RITIKA },
-        { state: "Punjab", value: USERS.RITIKA },
-        { state: "Rajasthan", value: USERS.RITIKA },
-        { state: "Sikkim", value: USERS.RITIKA },
-        { state: "Tamil Nadu", value: USERS.JANAKI },
-        { state: "Telangana", value: USERS.JANAKI },
-        { state: "Tripura", value: USERS.RITIKA },
-        { state: "Uttar Pradesh", value: USERS.RITIKA },
-        { state: "Uttarakhand", value: USERS.RITIKA },
-        { state: "West Bengal", value: USERS.RITIKA },
+    const statesMap = [
+        { label: "Andhra Pradesh", value: "Andhra Pradesh" },
+        { label: "Arunachal Pradesh", value: "Arunachal Pradesh" },
+        { label: "Assam", value: "Assam" },
+        { label: "Bihar", value: "Bihar" },
+        { label: "Chhattisgarh", value: "Chhattisgarh" },
+        { label: "Goa", value: "Goa" },
+        { label: "Gujarat", value: "Gujarat" },
+        { label: "Haryana", value: "Haryana" },
+        { label: "Himachal Pradesh", value: "Himachal Pradesh" },
+        { label: "Jharkhand", value: "Jharkhand" },
+        { label: "Karnataka", value: "Karnataka" },
+        { label: "Kerala", value: "Kerala" },
+        { label: "Madhya Pradesh", value: "Madhya Pradesh" },
+        { label: "Maharashtra", value: "Maharashtra" },
+        { label: "Manipur", value: "Manipur" },
+        { label: "Meghalaya", value: "Meghalaya" },
+        { label: "Mizoram", value: "Mizoram" },
+        { label: "Nagaland", value: "Nagaland" },
+        { label: "Odisha", value: "Odisha" },
+        { label: "Punjab", value: "Punjab" },
+        { label: "Rajasthan", value: "Rajasthan" },
+        { label: "Sikkim", value: "Sikkim" },
+        { label: "Tamil Nadu", value: "Tamil Nadu" },
+        { label: "Telangana", value: "Telangana" },
+        { label: "Tripura", value: "Tripura" },
+        { label: "Uttar Pradesh", value: "Uttar Pradesh" },
+        { label: "Uttarakhand", value: "Uttarakhand" },
+        { label: "West Bengal", value: "West Bengal" },
 
         // Union Territories
-        { state: "Andaman and Nicobar Islands", value: USERS.RITIKA },
-        { state: "Chandigarh", value: USERS.RITIKA },
-        { state: "Dadra and Nagar Haveli and Daman and Diu", value: USERS.RITIKA },
-        { state: "Delhi", value: USERS.RITIKA },
-        { state: "Jammu and Kashmir", value: USERS.RITIKA },
-        { state: "Ladakh", value: USERS.RITIKA },
-        { state: "Lakshadweep", value: USERS.RITIKA },
-        { state: "Puducherry", value: USERS.RITIKA },
+        { label: "Andaman and Nicobar Islands", value: "Andaman and Nicobar Islands" },
+        { label: "Chandigarh", value: "Chandigarh" },
+        { label: "Dadra and Nagar Haveli and Daman and Diu", value: "Dadra and Nagar Haveli and Daman and Diu" },
+        { label: "Delhi", value: "Delhi" },
+        { label: "Jammu and Kashmir", value: "Jammu and Kashmir" },
+        { label: "Ladakh", value: "Ladakh" },
+        { label: "Lakshadweep", value: "Lakshadweep" },
+        { label: "Puducherry", value: "Puducherry" },
     ];
-
-    const fetchCRMUsers = async () => {
-        try {
-            const response = await fetch("/api/crm-users");
-
-            if (!response.ok) {
-                const errorResult = await response.json();
-                throw new Error(errorResult?.message);
-            }
-
-            const result = await response.json();
-            // console.log("CRM Users:", result?.data);
-
-            const crmUserIds = result?.data?.map((u) => u?.id);
-
-            const formattedUsers = usersMap
-                ?.filter((u) => crmUserIds?.includes(u?.value))
-                ?.map((u) => ({
-                    value: u?.value,
-                    label: u?.state,
-                }));
-
-            // console.log("Formatted Users:", formattedUsers);
-
-            setUsersList(formattedUsers);
-        } catch (err) {
-            console.error("Error while fetching crm users", err);
-        }
-    };
-
-    useEffect(() => {
-        fetchCRMUsers();
-    }, []);
 
     const handleCancelModal = () => {
         setWidgetOpen(false);
+        recaptchaRef.current?.reset();
     };
 
     const onSubmit = async (data) => {
@@ -116,8 +79,11 @@ export default function InstantCallBackModal({ setWidgetOpen, widgetOpen, from }
             name: data?.name,
             email: data?.email,
             phone: data?.mobileNumber,
-            id: data?.selectedState?.value,
+            state: data?.selectedState?.value,
+            source: "Skygoal Website",
+            googleCaptchaToken: data?.captchaToken,
         };
+
         try {
             const response = await fetch('/api/zoho-callBack', {
                 method: 'POST',
@@ -128,16 +94,17 @@ export default function InstantCallBackModal({ setWidgetOpen, widgetOpen, from }
             });
             if (!response.ok) {
                 const errorResult = await response.json();
-                toast.error(errorResult?.message);
+                toast.error(errorResult?.message || "Something went wrong.");
                 throw new Error(errorResult?.message);
             };
             const result = await response.json();
             // console.log("Form data sent", result);
             toast.success(result?.message);
             reset();
+            recaptchaRef.current.reset();
         } catch (error) {
             console.error("Error while sending data", error);
-            toast.error("Something went wrong");
+            // toast.error("Something went wrong");
         }
     };
 
@@ -146,8 +113,13 @@ export default function InstantCallBackModal({ setWidgetOpen, widgetOpen, from }
         // console.log("Is Clicked Out Side", isClickedOutSide)
         if (!isClickedOutSide) {
             setWidgetOpen(false);
+            recaptchaRef.current?.reset();
             document.body.style.overflow = "auto";
-        }
+        };
+    };
+
+    const formatNumber = (value) => {
+        return value?.replace(/\D/g, "");
     };
 
     useEffect(() => {
@@ -171,7 +143,7 @@ export default function InstantCallBackModal({ setWidgetOpen, widgetOpen, from }
         <div
             className={`fixed z-100 ${from === "topNavigationBar" ? "w-full flex items-center justify-center inset-0 bg-black/50" : "bottom-[120px] right-5 max-md:right-0 max-md:bottom-0"}`}
         >
-            <div className='bg-white w-[600px] shadow-md max-md:w-full rounded-lg px-6 pt-6 pb-10 outsideClick'>
+            <div className='bg-white w-[600px] shadow-md max-md:w-full rounded-lg px-6 pt-6 pb-10 outsideClick overflow-y-auto h-[470px]'>
                 <div className={`w-full flex items-end justify-end`}>
                     <RxCross1 className='text-[1.5rem] cursor-pointer' onClick={handleCancelModal} />
                 </div>
@@ -179,42 +151,54 @@ export default function InstantCallBackModal({ setWidgetOpen, widgetOpen, from }
                     <h4 className='text-2xl max-lg:text-lg'>NEED A SERVICE?</h4>
                     <h3 className='text-3xl font-semibold max-lg:text-xl pt-2'>GET INSTANT CALL BACK</h3>
                 </div>
-                {/* <div className='w-full flex items-start justify-between gap-6 pt-4 max-lg:flex-col'> */}
-                {/* <div className='w-full'> */}
-                <form onSubmit={handleSubmit(onSubmit)} className='flex flex-col'>
-                    <div className='grid grid-cols-2 gap-6'>
+                <form onSubmit={handleSubmit(onSubmit)} className='flex flex-col gap-8'>
+                    <div className='grid grid-cols-1 sm:grid-cols-2 gap-6'>
                         <div>
                             <input
-                                className='outline-none w-full border border-gray-300 rounded-md text-sm px-3 py-2'
+                                className='outline-none w-full border border-gray-300 rounded-md text-sm px-3 py-2.5'
                                 type='text'
                                 placeholder='Name'
                                 {...register("name", {
                                     required: "*This field is required"
                                 })}
                             />
-                            {errors?.name && <ErrorMessage />}
+                            {errors?.name && (
+                                <ErrorMessage />
+                            )}
                         </div>
                         <div>
                             <input
-                                className='outline-none w-full border border-gray-300 text-sm rounded-md px-3 py-2'
-                                type='number'
+                                className='outline-none w-full border border-gray-300 text-sm rounded-md px-3 py-2.5'
+                                type='tel'
                                 placeholder='Mobile Number'
                                 {...register("mobileNumber", {
-                                    required: "*This field is required"
+                                    required: "*This field is required",
+                                    validate: (value) => {
+                                        const cleanedNum = formatNumber(value);
+                                        if (cleanedNum?.length !== 10 && cleanedNum?.length !== 12) {
+                                            return "*Enter a valid number";
+                                        };
+                                        return true;
+                                    }
                                 })}
+                                onInput={(e) => setValue("mobileNumber", e.target.value)}
                             />
-                            {errors?.mobileNumber && <ErrorMessage />}
+                            {errors?.mobileNumber && (
+                                <ErrorMessage message={errors?.mobileNumber?.message} />
+                            )}
                         </div>
                         <div>
                             <input
-                                className='outline-none w-full border border-gray-300 text-sm rounded-md px-3 py-2'
+                                className='outline-none w-full border border-gray-300 text-sm rounded-md px-3 py-2.5'
                                 type='email'
                                 placeholder='Email'
                                 {...register("email", {
                                     required: "*This field is required"
                                 })}
                             />
-                            {errors?.email && <ErrorMessage />}
+                            {errors?.email && (
+                                <ErrorMessage />
+                            )}
                         </div>
                         <div>
                             <Controller
@@ -225,7 +209,7 @@ export default function InstantCallBackModal({ setWidgetOpen, widgetOpen, from }
                                     <Select
                                         {...field}
                                         styles={reactSelectCustomStyles}
-                                        options={usersList}
+                                        options={statesMap}
                                         placeholder="Select State"
                                     // isClearable
                                     >
@@ -238,32 +222,43 @@ export default function InstantCallBackModal({ setWidgetOpen, widgetOpen, from }
                             )}
                         </div>
                     </div>
-                    <div className='mt-8 ml-auto'>
-                        {isSubmitting ?
-                            <>
-                                <CustomThreeDotsLoader />
-                            </>
-                            :
-                            <button
-                                className='text-white bg-[#2A2742] px-10 py-2 rounded-md cursor-pointer'
-                                disabled={isSubmitting}
-                                type='submit'
+                    <div className='flex flex-col gap-6'>
+                        <div>
+                            <Controller
+                                control={control}
+                                name='captchaToken'
+                                rules={{ required: "*This field is required." }}
+                                render={({ field }) => (
+                                    <ReCAPTCHA
+                                        sitekey={process.env.NEXT_PUBLIC_GOOGLE_RECAPTCHA_SITE_KEY}
+                                        onChange={(token) => field.onChange(token)}
+                                        onExpired={() => field.onChange(null)}
+                                        ref={recaptchaRef}
+                                    />
+                                )}
                             >
-                                Submit
-                            </button>
-                        }
+                            </Controller>
+                            {errors?.captchaToken && (
+                                <ErrorMessage />
+                            )}
+                        </div>
+                        <div className='w-40'>
+                            {isSubmitting ?
+                                <>
+                                    <CustomThreeDotsLoader />
+                                </>
+                                :
+                                <button
+                                    className='text-white bg-[#2A2742] px-10 py-2 rounded-md cursor-pointer'
+                                    disabled={isSubmitting}
+                                    type='submit'
+                                >
+                                    Submit
+                                </button>
+                            }
+                        </div>
                     </div>
                 </form>
-                {/* </div> */}
-                {/* <div className='w-60 h-[170px] max-lg:w-full bg-[#2A2742] max-lg:order-1'>
-                        <Image
-                            src={callBackFormImg}
-                            className='w-full h-full object-contain max-lg:w-full'
-                            loading='eager'
-                            alt='callBackFormImg'
-                        />
-                    </div> */}
-                {/* </div> */}
             </div>
             <ToastContainer />
         </div>

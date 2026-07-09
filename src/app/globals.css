@@ -21,3 +21,21 @@ body::-webkit-scrollbar-thumb {
 html {
   scroll-behavior: smooth;
 }
+
+@keyframes dotBounceScale {
+
+  0%,
+  100% {
+    transform: scale(0);
+    opacity: 0.4;
+  }
+
+  50% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.dot-bounce {
+  animation: dotBounceScale 1s infinite ease-in-out;
+}

@@ -152,7 +152,7 @@ export default function TopNavigationBar() {
                         }`}
                 >
                     <div onClick={() => handleNavigation('/')} className='cursor-pointer'>
-                        <Image src={sky_logo} alt="Sky-Goal Logo" className='w-24' />
+                        <Image src={sky_logo} alt="Sky-Goal Logo" className='w-30' />
                     </div>
                     <ul className="flex items-center gap-8">
                         {topNavPaths?.map((item, index) => (
