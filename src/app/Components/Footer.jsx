@@ -46,7 +46,7 @@ export default function Footer() {
         },
         {
             icon: <FaLinkedin />,
-            path: "https://www.linkedin.com/company/skygoaltech/",
+            path: "https://www.linkedin.com/company/skygoal/",
             title: "LinkedIn",
             size: "27.2"
         },
