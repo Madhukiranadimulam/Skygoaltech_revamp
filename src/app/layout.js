@@ -23,6 +23,9 @@ export const metadata = {
     title: "Best Tech and IT service provider",
     description: "Get top-notch technology and IT services tailored for your business.",
     siteName: "SGIT",
+  },
+  other:{
+    "facebook-domain-verification": "xuvxasuk28c12bkfamz6z1uo1tpo2k"
   }
 };
 
