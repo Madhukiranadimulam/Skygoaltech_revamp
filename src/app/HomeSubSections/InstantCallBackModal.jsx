@@ -139,8 +139,6 @@ export default function InstantCallBackModal({ setWidgetOpen, widgetOpen, from }
         };
     }, [widgetOpen]);
 
-    console.log("Site Key", process.env.NEXT_PUBLIC_GOOGLE_RECAPTCHA_SITE_KEY);
-
     return (
         <div
             className={`fixed z-100 ${from === "topNavigationBar" ? "w-full flex items-center justify-center inset-0 bg-black/50" : "bottom-[120px] right-5 max-md:right-0 max-md:bottom-0"}`}
